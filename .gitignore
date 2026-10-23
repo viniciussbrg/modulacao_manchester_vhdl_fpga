@@ -1,0 +1,20 @@
+# Arquivos temporários e gerados pelo Vivado
+*.jou
+*.log
+*.str
+*.pb
+*.wdb
+*.backup.*
+.Xil/
+*.cache/
+*.runs/
+*.sim/
+*.hw/
+*.gen/
+*.ip_user_files/
+*.tmp/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
