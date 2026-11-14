@@ -1,17 +1,49 @@
 # Projeto 2 — Codificação Manchester Diferencial
 
-Implementação em VHDL do codificador de linha **Manchester Diferencial**, com simulação comportamental no Vivado Simulator e implementação física na placa FPGA **Digilent Basys 3** (LEDs, conector PMOD para osciloscópio e saída VGA com cores pulsantes).
+Implementação completa em **VHDL** do codificador de linha **Manchester Diferencial (IEEE 802.5)**, incluindo simulação auto-verificável no **Vivado Simulator** e validação prática na placa **Digilent Basys 3** utilizando **LEDs** (1 Hz), **Osciloscópio Analog Discovery 3 via PMOD** e **Monitor VGA** (640×480 @ 60 Hz).
 
-## 📐 Explicação Teórica e Convenção Adotada
+---
 
-Na codificação **Manchester Diferencial**, **sempre ocorre uma transição no meio do intervalo de bit** (utilizada exclusivamente para sincronismo de relógio), e o valor lógico do bit é representado pela **presença ou ausência de transição no início do intervalo de bit**:
+## 📐 Como Funciona o Manchester Diferencial?
 
-| Bit de Entrada | Início do Intervalo de Bit | Meio do Intervalo de Bit | Expressão no Início do Bit (`enc`) |
-| :---: | :---: | :---: | :---: |
-| **`0`** | **Ocorre inversão** do nível anterior | **Ocorre inversão** do nível (`not enc`) | `enc <= not enc` |
-| **`1`** | **Mantém** o nível anterior | **Ocorre inversão** do nível (`not enc`) | `enc <= enc` |
+Diferentemente do Manchester Clássico (que olha se a transição no meio do bit sobe ou desce), no **Manchester Diferencial** a transição no meio do bit serve **exclusivamente para manter o relógio sincronizado**. A informação (`'0'` ou `'1'`) é guardada na **fronteira de início de cada bit**, comparando com o nível em que terminou o bit anterior:
 
-Como a codificação depende do nível anterior, o circuito armazena o estado atual da saída no flip-flop `enc`. Conforme especificado no enunciado, **o nível da saída imediatamente após o reset (`BTNC = '1'`) é baixo (`'0'`)**. Uma vantagem fundamental do Manchester Diferencial é sua **imunidade à inversão de polaridade** dos fios do canal de transmissão.
+* **Estado Inicial após o Reset (`BTNC`):** O sinal começa padronizado em **Nível Baixo (`'0'`)**.
+* **Para transmitir o bit `'0'`:**
+  * **No INÍCIO do bit:** **INVERTE** o nível em relação ao final do bit anterior (`enc <= not enc`);
+  * **No MEIO do bit:** **INVERTE** novamente (transição obrigatória de sincronismo).
+* **Para transmitir o bit `'1'`:**
+  * **No INÍCIO do bit:** **MANTÉM** o mesmo nível em que terminou o bit anterior (`enc <= enc`);
+  * **No MEIO do bit:** **INVERTE** o nível (transição obrigatória de sincronismo).
+
+| Bit no Switch (`SW`) | Fronteira de Início do Bit | Meio do Bit ($T_b/2$) | Expressão na 1ª Metade | Expressão na 2ª Metade |
+| :---: | :---: | :---: | :---: | :---: |
+| **`0`** (chave abaixada) | **Com transição (inverte)** | **Com transição (inverte)** | `enc <= enc xor (not cur_bit)` | `enc <= not enc` |
+| **`1`** (chave levantada) | **Sem transição (mantém)** | **Com transição (inverte)** | `enc <= enc xor (not cur_bit)` | `enc <= not enc` |
+
+> **Vantagem Principal:** Como o receptor só precisa detectar **se houve ou não mudança de nível no início do bit**, o Manchester Diferencial é **100% imune à inversão dos fios de transmissão**!
+
+---
+
+## 🧩 Arquitetura Interna do Circuito
+
+Veja no diagrama abaixo como o arquivo [`src/manchester_dif.vhd`](./src/manchester_dif.vhd) possui um **elo de realimentação (memória de 1 bit no registrador `enc`)**, pois cada novo bit depende do nível final do bit anterior:
+
+![Diagrama de Blocos Manchester Diferencial](./docs/midia/diagrama_blocos_manchester_dif.png)
+
+---
+
+## 🧪 Resultados Obtidos
+
+### 1. Simulação Comportamental no Vivado Simulator
+Simulação com `CYCLES_PER_BIT = 10` (`100 ns` por bit) testando `0xB2A5`, troca dinâmica para `0x5A3C` e pulso de reset assíncrono:
+
+![Simulação Manchester Diferencial no Vivado](./docs/midia/simulacao_manchester_dif.png)
+
+### 2. Medição Real no Osciloscópio (Digilent Analog Discovery 3)
+Captura obtida no software **WaveForms** medindo a saída da placa Basys 3, evidenciando os pulsos curtos (quando há inversão no início e no meio para bits `'0'`) e os pulsos duplos (quando o nível é mantido na fronteira de entrada de um bit `'1'`):
+
+![Osciloscópio Manchester Diferencial Real](./saidas/pmod_osciloscopio/docs/midia/osciloscopio_manchester_dif.png)
 
 ---
 
@@ -19,69 +51,39 @@ Como a codificação depende do nível anterior, o circuito armazena o estado at
 
 ```text
 manchester_diferencial/
-├── README.md                                  # Este arquivo (guia local do projeto Manchester Diferencial)
+├── README.md                                  # Este guia do Projeto 2
 ├── src/
-│   ├── manchester_dif.vhd                     # Circuito principal do codificador Manchester Diferencial
-│   ├── manchester_dif_top.vhd                 # Top-level para a placa (LEDs 1 Hz, PMOD 1 kHz e VGA)
-│   └── vga_pulse.vhd                          # Controlador VGA 640x480 @ 60Hz com cores pulsantes
+│   ├── manchester_dif.vhd                     # Núcleo codificador Manchester Diferencial
+│   ├── manchester_dif_top.vhd                 # Topo para a placa Basys 3 (LEDs 1 Hz + PMOD 1 kHz + VGA)
+│   └── vga_pulse.vhd                          # Controlador VGA 640x480 @ 60Hz
 ├── sim/
-│   └── manchester_dif_tb.vhd                  # Testbench com verificação automática via assert
+│   └── manchester_dif_tb.vhd                  # Testbench auto-verificável com assert
 ├── constraints/
-│   └── manchester_dif.xdc                     # Mapeamento dos pinos da Basys 3 (Switches, LEDs, PMOD, VGA)
+│   └── manchester_dif.xdc                     # Pinagem física completa da Basys 3
 ├── vivado_project/
-│   └── manchester_diferencial.xpr             # Projeto Vivado 2025.2 pronto para abrir
+│   └── manchester_diferencial.xpr             # Projeto Vivado pronto para abrir
 ├── docs/
-│   ├── tutorial_simulacao.pdf                 # Passo a passo da simulação no Vivado
-│   ├── tutorial_placa.pdf                     # Passo a passo de síntese, implementação e gravação
-│   ├── documentacao_projeto.pdf               # Documentação técnica completa do circuito
-│   └── midia/                                 # Prints da simulação e diagramas técnicos
+│   ├── documentacao_projeto.pdf               # Documentação técnica detalhada do circuito
+│   ├── tutorial_simulacao.pdf                 # Tutorial passo a passo da simulação
+│   ├── tutorial_placa.pdf                     # Tutorial passo a passo da gravação na placa
+│   └── midia/                                 # Diagramas e capturas de tela
 └── saidas/
-    ├── pmod_osciloscopio/                     # Saída em 1 kHz nos pinos PMOD JA1 (J1) e JA2 (L2)
-    └── vga/                                   # Saída VGA 640x480 @ 60Hz com cores pulsantes
+    ├── pmod_osciloscopio/                     # Guia e arquivos da saída para osciloscópio (JA1/JA2)
+    └── vga/                                   # Guia e arquivos da saída para monitor VGA
 ```
 
 ---
 
-## 💻 Arquivos de Código
+## 📚 Documentos em PDF deste Projeto
 
-* **`src/manchester_dif.vhd`** — Módulo principal do codificador Manchester Diferencial. Mantém o registrador de estado `enc` inicializado em `'0'` durante o reset síncrono (`rst_s = '1'`). No início de cada novo bit (`cnt = CYCLES_PER_BIT - 1`), atualiza `enc <= enc xor (not data_in(nxt_idx))` (invertendo se o bit for `'0'` e mantendo se for `'1'`); na metade do bit (`cnt = HALF - 1`), executa `enc <= not enc`.
-* **`src/manchester_dif_top.vhd`** — Entidade de topo para síntese na Basys 3, instanciando `u_slow` (`CPB_LED = 100_000_000`, 1 s/bit para LEDs e VGA), `u_fast` (`CPB_SCOPE = 100_000`, 1 kbit/s para PMOD) e `u_vga` (`vga_pulse`).
-* **`src/vga_pulse.vhd`** — Controlador VGA 640×480 @ 60 Hz com cores de tela cheia pulsantes (**Azul** para nível `'0'` e **Amarelo/Claro** para nível `'1'`).
-* **`sim/manchester_dif_tb.vhd`** — Testbench auto-verificável (`CYCLES_PER_BIT = 10`, `BIT_PERIOD = 100 ns`) que rastreia o estado anterior em uma variável `prev` (inicializada em `'0'`), exercita sequências com bits `0` e `1` consecutivos e alternados (`DATA_A = 0xB2A5` e `DATA_B = 0x5A3C`), testa a troca dinâmica de switches e o retorno ao nível `'0'` durante o reset.
-* **`constraints/manchester_dif.xdc`** — Mapeamento físico de pinos da Basys 3 para Clock (`W5`), Reset (`U18`), Switches (`SW15..SW0`), LEDs (`LD15..LD0`), PMOD (`J1`/`L2`) e VGA.
-
----
-
-## 📚 Documentação e Tutoriais (`docs/`)
-
-* [📘 **Documentação Técnica (`documentacao_projeto.pdf`)**](./docs/documentacao_projeto.pdf) — Diagrama de blocos com realimentação de estado, tabela de portas, funcionamento interno e pinagem.
-* [🧪 **Tutorial de Simulação (`tutorial_simulacao.pdf`)**](./docs/tutorial_simulacao.pdf) — Passo a passo para simular `manchester_dif_tb` no Vivado e conferir a regra diferencial.
-* [🔌 **Tutorial de Gravação na Placa (`tutorial_placa.pdf`)**](./docs/tutorial_placa.pdf) — Síntese, geração de bitstream, programação da Basys 3 e conferência prática nos LEDs.
-
----
-
-## 🚀 Por Onde Começar
-
-### Para uma simulação rápida (2 minutos):
-1. Abra o **Vivado** e carregue `vivado_project/manchester_diferencial.xpr`.
-2. Clique em **Run Simulation** $ightarrow$ **Run Behavioral Simulation**.
-
-### Para reproduzir o projeto do zero:
-1. **Entenda o circuito** lendo a [Documentação Técnica](./docs/documentacao_projeto.pdf).
-2. **Compare com o Manchester clássico** ([projeto anterior](../manchester/)) observando a memória de 1 bit no registrador `enc`.
-3. **Simule no Vivado** seguindo o [Tutorial de Simulação](./docs/tutorial_simulacao.pdf).
-4. **Grave na placa Basys 3** seguindo o [Tutorial de Gravação](./docs/tutorial_placa.pdf).
-5. **Implemente as atividades de visualização** em [Saída PMOD](./saidas/pmod_osciloscopio/) e [Saída VGA](./saidas/vga/).
-
----
-
-## 📡 Saídas PMOD e VGA
-
-* [**Saída pelo PMOD para Osciloscópio**](./saidas/pmod_osciloscopio/) — Exibe `data_out` (`JA1`/`J1`) e `data_raw` (`JA2`/`L2`) em 1 kbit/s no osciloscópio.
-* [**Saída VGA com Cores Pulsantes**](./saidas/vga/) — Exibe as transições de início e meio de bit do Manchester Diferencial em tela cheia num monitor VGA.
+* 📘 [**Documentação Técnica (`docs/documentacao_projeto.pdf`)**](./docs/documentacao_projeto.pdf)
+* 🧪 [**Tutorial de Simulação (`docs/tutorial_simulacao.pdf`)**](./docs/tutorial_simulacao.pdf)
+* 🔌 [**Tutorial de Gravação na Placa (`docs/tutorial_placa.pdf`)**](./docs/tutorial_placa.pdf)
+* 📈 [**Tutorial da Saída PMOD / Osciloscópio (`saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf`)**](./saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf)
+* 🖥️ [**Tutorial da Saída VGA (`saidas/vga/docs/tutorial_vga.pdf`)**](./saidas/vga/docs/tutorial_vga.pdf)
 
 ---
 
 ## ➡️ Próximo Passo
 
-Você concluiu os dois projetos do trabalho! Agora acesse o [**Relatório Técnico Final (`relatorio.pdf`)**](../relatorio_final/relatorio.pdf) para ver a fundamentação teórica, a análise comparativa entre **Manchester (IEEE 802.3)**, **Manchester Diferencial** e **NRZ**, os resultados consolidados e as conclusões do **Grupo 8**.
+Após explorar os dois projetos, acesse o [**Relatório Técnico Final Consolidado (`../relatorio_final/relatorio.pdf`)**](../relatorio_final/relatorio.pdf) para ver a análise comparativa completa entre **Manchester**, **Manchester Diferencial**, **NRZ-L** e **NRZ-I**.

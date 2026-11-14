@@ -1,40 +1,32 @@
-# Saída pelo PMOD para Osciloscópio — Manchester Diferencial
+# Saída PMOD para Osciloscópio — Codificação Manchester Diferencial
 
-Disponibiliza simultaneamente o **sinal codificado em Manchester Diferencial (`data_out`)** e o **dado NRZ original (`data_raw`)** nos pinos `JA1` e `JA2` do conector **PMOD JA** da placa Basys 3, permitindo capturar e analisar em um osciloscópio físico a presença ou ausência de transição na fronteira de cada bit.
+Esta pasta contém os arquivos e o passo a passo para conectar o osciloscópio **Digilent Analog Discovery 3** ao conector **PMOD `JA`** da placa **Basys 3** e observar a onda elétrica do código **Manchester Diferencial**.
 
-## 🎯 O que esta saída implementa e por quê
+---
 
-No módulo de topo `manchester_dif_top.vhd`, a instância rápida `u_fast` opera com `CPB_SCOPE = 100_000` (taxa de **$1	ext{ kbit/s}$**, período de bit $T_b = 1	ext{ ms}$), adequada para visualização estacionária no osciloscópio. Ambos os sinais (`data_out` e `data_raw`) são registrados por flip-flops síncronos ao clock de 100 MHz, evitando *glitches* nas bordas de transição.
+## 🔌 Como Conectar os Fios (Basys 3 + Analog Discovery 3)
 
-No osciloscópio, é possível verificar diretamente a regra diferencial comparando o Canal 1 (`data_out`) com o Canal 2 (`data_raw`):
-* Quando `data_raw = '0'`, o Canal 1 **inverte** seu nível no início do bit e inverte novamente no meio do bit ($0,5	ext{ ms}$);
-* Quando `data_raw = '1'`, o Canal 1 **mantém** o nível final do bit anterior no início do bit e inverte apenas no meio do bit ($0,5	ext{ ms}$).
+No conector **`JA`** (localizado no **topo da lateral esquerda** da Basys 3, logo abaixo do LED `POWER`):
 
-## 📂 Estrutura desta Pasta
+| Pino no PMOD `JA` | Posição Física no Conector `JA` | Pino da FPGA | Sinal VHDL | Fio do Analog Discovery 3 (ou Osciloscópio) |
+| :--- | :--- | :---: | :--- | :--- |
+| **`JA1`** | **1º furo de baixo para cima** (fileira externa, marcado com `1`) | `J1` | **`data_out`** (Manchester Diferencial) | **Fio Laranja liso (`1+` / Canal 1)** |
+| **`JA2`** | **2º furo de baixo para cima** (logo acima do `JA1`) | `L2` | **`data_raw`** (Bit NRZ original) | **Fio Azul liso (`2+` / Canal 2)** |
+| **`JA5` (`GND`)** | **5º furo de baixo para cima** (marcado como `GND` na placa) | `GND` | **Terra (0 V)** | **Fio Laranja/Branco (`1-`) + Fio Preto (`GND`)** |
+| **`JA11` (`GND`)** | **5º furo da fileira interna** (ao lado do `JA5`) | `GND` | **Terra (0 V)** | **Fio Azul/Branco (`2-`)** |
 
-```text
-pmod_osciloscopio/
-├── README.md                        # Este arquivo
-├── src/
-│   ├── manchester_dif.vhd           # Codificador Manchester Diferencial
-│   └── manchester_dif_top.vhd       # Top-level com instância u_fast (CPB_SCOPE = 100_000)
-├── constraints/
-│   └── manchester_dif.xdc           # Constraint mapeando JA1 (J1) e JA2 (L2)
-└── docs/
-    ├── tutorial_pmod.pdf            # Tutorial passo a passo de conexão e captura no osciloscópio
-    └── midia/
-        └── osciloscopio_manchester_dif.png
-```
+---
 
-## 🧰 Equipamentos Necessários
+## 📈 Captura Real no Osciloscópio (Digilent WaveForms)
 
-* Placa FPGA **Digilent Basys 3** programada;
-* **Osciloscópio digital de 2 canais**;
-* 2 pontas de prova e cabos *jumper* para os pinos `JA1` (`J1`), `JA2` (`L2`) e `GND`.
+![Captura Real no Osciloscópio Analog Discovery 3 — Manchester Diferencial](./docs/midia/osciloscopio_manchester_dif.png)
 
-## 🚀 Como Reproduzir
+### Como identificar os bits `'0'` e `'1'` no gráfico acima:
+* **Bits `'0'`:** Geram **duas transições** por bit (uma na fronteira de início do bit e outra no meio), formando **dois pulsos estreitos** de meio período ($T_b/2$).
+* **Bits `'1'`:** **Mantêm o nível** na fronteira de início do bit (unindo a segunda metade do bit anterior com a primeira metade do bit atual em um **pulso largo de período inteiro $T_b$**) e invertem apenas no meio do bit!
 
-Consulte o [**Tutorial Completo da Saída PMOD (`tutorial_pmod.pdf`)**](./docs/tutorial_pmod.pdf), que descreve:
-1. Conexão física do osciloscópio aos pinos `JA1` (`J1`) e `JA2` (`L2`) do PMOD JA;
-2. Gravação do bitstream na Basys 3;
-3. Configuração de escala (`2 V/div`, `1,0 ms/div`) e captura da forma de onda diferencial.
+---
+
+## 📄 Documentação Completa
+
+* 📈 [**Tutorial Completo da Saída PMOD (`docs/tutorial_pmod.pdf`)**](./docs/tutorial_pmod.pdf)

@@ -1,15 +1,55 @@
-# Projeto 1 — Codificação Manchester (IEEE 802.3)
+# Projeto 1 — Codificação Manchester (Padrão IEEE 802.3)
 
-Implementação em VHDL do codificador de linha **Manchester** segundo a convenção do padrão **IEEE 802.3 (Ethernet)**, com simulação comportamental no Vivado Simulator e implementação física na placa FPGA **Digilent Basys 3** (LEDs, conector PMOD para osciloscópio e saída VGA com cores pulsantes).
+Implementação completa em **VHDL** do codificador de linha **Manchester (IEEE 802.3 — Ethernet)**, incluindo simulação auto-verificável no **Vivado Simulator** e validação prática na placa **Digilent Basys 3** utilizando **LEDs** (1 Hz), **Osciloscópio Analog Discovery 3 via PMOD** (1 kHz) e **Monitor VGA** (640×480 @ 60 Hz).
 
-## 📐 Explicação Teórica e Convenção Adotada
+---
 
-Na codificação Manchester, cada intervalo de bit (`CYCLES_PER_BIT`) é dividido em duas metades iguais (`HALF = CYCLES_PER_BIT / 2`) e **sempre ocorre uma transição no meio do bit**, tornando o sinal autossincronizante e livre de componente DC. Neste trabalho adota-se a convenção **IEEE 802.3**:
+## 📐 Como Funciona o Código Manchester (IEEE 802.3)?
 
-| Bit de Entrada | 1ª Metade do Bit | 2ª Metade do Bit | Sentido da Transição no Meio do Bit | Expressão Lógica (`enc`) |
-| :---: | :---: | :---: | :---: | :---: |
-| **`0`** | Nível Alto (`'1'`) | Nível Baixo (`'0'`) | **Descida** (Alto $ightarrow$ Baixo) | 1ª metade: `not bit` / 2ª metade: `bit` |
-| **`1`** | Nível Baixo (`'0'`) | Nível Alto (`'1'`) | **Subida** (Baixo $ightarrow$ Alto) | 1ª metade: `not bit` / 2ª metade: `bit` |
+Imagine que cada bit tem duração total $T_b$ (configurada no código pelo parâmetro `CYCLES_PER_BIT`). O circuito divide cada bit em **duas metades iguais** (`HALF = CYCLES_PER_BIT / 2`):
+
+* **Para transmitir o bit `'0'`:**
+  * **1ª metade do bit:** o sinal fica em **Nível Alto (`'1'` = 3,3 V / LED aceso)**;
+  * **2ª metade do bit:** o sinal cai para **Nível Baixo (`'0'` = 0 V / LED apagado)**;
+  * **O que acontece no meio do bit?** Uma **transição de DESCIDA (Alto → Baixo)**.
+* **Para transmitir o bit `'1'`:**
+  * **1ª metade do bit:** o sinal fica em **Nível Baixo (`'0'` = 0 V / LED apagado)**;
+  * **2ª metade do bit:** o sinal sobe para **Nível Alto (`'1'` = 3,3 V / LED aceso)**;
+  * **O que acontece no meio do bit?** Uma **transição de SUBIDA (Baixo → Alto)**.
+
+| Bit no Switch (`SW`) | 1ª Metade do Bit | 2ª Metade do Bit | Transição no Meio do Bit | Como o LED se comporta (1 s por bit) |
+| :---: | :---: | :---: | :---: | :--- |
+| **`0`** (chave abaixada) | `'1'` (3,3 V) | `'0'` (0 V) | **Descida (↓)** | Começa **ACESO** por `0,5 s` → fica **APAGADO** por `0,5 s` |
+| **`1`** (chave levantada) | `'0'` (0 V) | `'1'` (3,3 V) | **Subida (↑)** | Começa **APAGADO** por `0,5 s` → fica **ACESO** por `0,5 s` |
+
+---
+
+## 🧩 Arquitetura Interna do Circuito
+
+O diagrama abaixo mostra exatamente como o arquivo [`src/manchester.vhd`](./src/manchester.vhd) funciona por dentro:
+
+![Diagrama de Blocos Manchester](./docs/midia/diagrama_blocos_manchester.png)
+
+1. **Sincronizador de Reset (`rst_meta` → `rst_s`):** Quando você aperta o botão central `BTNC` na placa, o sinal passa por 2 flip-flops para evitar falhas elétricas de metaestabilidade.
+2. **Contador de Tempo (`cnt`) e Ponteiro de Bit (`idx`):** Conta os pulsos do relógio de 100 MHz da placa. Ao terminar um bit, passa automaticamente para a próxima chave da esquerda para a direita (`SW15` → `SW14` → ... → `SW0` → volta ao `SW15`).
+3. **Memória do Bit Atual (`cur_bit`):** Fotografa o valor da chave apenas no início do bit. Se você mexer na chave no meio da transmissão daquele bit, ele não gera erro na onda!
+4. **Dupla Velocidade no Topo (`manchester_top.vhd`):**
+   * Instância **`u_slow`** (`100.000.000` ciclos = **1 segundo por bit**): ligada aos **LEDs** e ao **VGA** para visualização a olho nu.
+   * Instância **`u_fast`** (`100.000` ciclos = **1 milissegundo por bit / 1 kHz**): ligada ao conector **PMOD (`JA1` e `JA2`)** para visualização perfeita no osciloscópio.
+
+---
+
+## 🧪 Resultados Obtidos
+
+### 1. Simulação Comportamental no Vivado Simulator
+Na simulação com `CYCLES_PER_BIT = 10` (`100 ns` por bit), transmitimos a palavra `0xB2A5` (`1011_0010_1010_0101`), trocamos dinamicamente para `0x5A3C` (`0101_1010_0011_1100`) e testamos o botão de reset:
+
+![Simulação Manchester no Vivado](./docs/midia/simulacao_manchester.png)
+
+### 2. Medição Real no Osciloscópio (Digilent Analog Discovery 3)
+Captura obtida no software **WaveForms** medindo o pino **`JA1`** (`data_out` a 1 kHz, escala de `2,5 ms/div`), comprovando os níveis de `0 V` a `3,3 V` e as transições exatas a cada `0,5 ms`:
+
+![Osciloscópio Manchester Real](./saidas/pmod_osciloscopio/docs/midia/osciloscopio_manchester.png)
 
 ---
 
@@ -17,69 +57,43 @@ Na codificação Manchester, cada intervalo de bit (`CYCLES_PER_BIT`) é dividid
 
 ```text
 manchester/
-├── README.md                                  # Este arquivo (guia local do projeto Manchester)
+├── README.md                                  # Este guia do Projeto 1
 ├── src/
-│   ├── manchester.vhd                         # Circuito principal do codificador Manchester
-│   ├── manchester_top.vhd                     # Top-level para a placa (LEDs 1 Hz, PMOD 1 kHz e VGA)
-│   └── vga_pulse.vhd                          # Controlador VGA 640x480 @ 60Hz com cores pulsantes
+│   ├── manchester.vhd                         # Núcleo codificador Manchester (IEEE 802.3)
+│   ├── manchester_top.vhd                     # Topo para a placa Basys 3 (LEDs 1 Hz + PMOD 1 kHz + VGA)
+│   └── vga_pulse.vhd                          # Controlador VGA 640x480 @ 60Hz
 ├── sim/
-│   └── manchester_tb.vhd                      # Testbench com verificação automática via assert
+│   └── manchester_tb.vhd                      # Testbench auto-verificável com assert
 ├── constraints/
-│   └── manchester.xdc                         # Mapeamento dos pinos da Basys 3 (Switches, LEDs, PMOD, VGA)
+│   └── manchester.xdc                         # Pinagem física completa da Basys 3
 ├── vivado_project/
-│   ├── manchester.xpr                         # Projeto Vivado 2025.2 pronto para abrir
-│   └── manchester_top.bit                     # Bitstream sintetizado pronto para gravação na Basys 3
+│   ├── manchester.xpr                         # Projeto Vivado pronto para abrir
+│   └── manchester_top.bit                     # Bitstream pronto para gravar na FPGA
 ├── docs/
-│   ├── tutorial_simulacao.pdf                 # Passo a passo da simulação no Vivado
-│   ├── tutorial_placa.pdf                     # Passo a passo de síntese, implementação e gravação
-│   ├── documentacao_projeto.pdf               # Documentação técnica completa do circuito
-│   └── midia/                                 # Prints da simulação e diagramas técnicos
+│   ├── documentacao_projeto.pdf               # Documentação técnica detalhada do circuito
+│   ├── tutorial_simulacao.pdf                 # Tutorial passo a passo da simulação
+│   ├── tutorial_placa.pdf                     # Tutorial passo a passo da gravação na placa
+│   └── midia/                                 # Diagramas e capturas de tela
 └── saidas/
-    ├── pmod_osciloscopio/                     # Saída em 1 kHz nos pinos PMOD JA1 (J1) e JA2 (L2)
-    └── vga/                                   # Saída VGA 640x480 @ 60Hz com cores pulsantes
+    ├── pmod_osciloscopio/                     # Guia e arquivos da saída para osciloscópio (JA1/JA2)
+    └── vga/                                   # Guia e arquivos da saída para monitor VGA
 ```
 
 ---
 
-## 💻 Arquivos de Código
+## 📚 Documentos em PDF deste Projeto
 
-* **`src/manchester.vhd`** — Módulo principal do codificador Manchester (IEEE 802.3). Recebe o vetor `data_in(15 downto 0)` dos switches, sincroniza o botão de reset `rst` por dois flip-flops em série, varre ciclicamente de `SW15` até `SW0` (1 segundo por bit por padrão, `CYCLES_PER_BIT = 100_000_000`) e registra as saídas `data_out` (sinal codificado), `data_raw` (bit NRZ atual) e `led(15 downto 0)` (acende apenas o LED acima do switch em transmissão).
-* **`src/manchester_top.vhd`** — Entidade de topo para síntese na placa Basys 3. Instancia duas cópias do codificador: `u_slow` (`CPB_LED = 100_000_000`, 1 s/bit para visualização humana nos LEDs e no monitor VGA) e `u_fast` (`CPB_SCOPE = 100_000`, 1 kbit/s para visualização estável no osciloscópio via PMOD), além do controlador `u_vga`.
-* **`src/vga_pulse.vhd`** — Controlador de vídeo VGA padrão 640×480 @ 60 Hz (pixel clock de 25 MHz derivado de 100 MHz) que preenche a tela inteira com **Azul** quando o sinal codificado está em nível baixo (`'0'`) e **Amarelo/Claro** quando está em nível alto (`'1'`).
-* **`sim/manchester_tb.vhd`** — Testbench auto-verificável que instancia `manchester` com `CYCLES_PER_BIT = 10` (`BIT_PERIOD = 100 ns`), testa o quadro `DATA_A = 0xB2A5`, realiza troca dinâmica de chaves no meio do último bit para `DATA_B = 0x5A3C`, aciona o `rst` assíncrono durante a transmissão e valida todas as metades de bit com instruções `assert`.
-* **`constraints/manchester.xdc`** — Arquivo Xilinx Design Constraints mapeando o clock de 100 MHz (`W5`), botão `BTNC` (`U18`), switches `SW15..SW0`, LEDs `LD15..LD0`, PMOD `JA1` (`J1`) / `JA2` (`L2`) e conector VGA.
-
----
-
-## 📚 Documentação e Tutoriais (`docs/`)
-
-* [📘 **Documentação Técnica (`documentacao_projeto.pdf`)**](./docs/documentacao_projeto.pdf) — Diagrama de blocos, tabela de portas e generics, funcionamento interno ciclo a ciclo e pinagem completa.
-* [🧪 **Tutorial de Simulação (`tutorial_simulacao.pdf`)**](./docs/tutorial_simulacao.pdf) — Como abrir o projeto no Vivado, executar a simulação comportamental e interpretar o waveform.
-* [🔌 **Tutorial de Gravação na Placa (`tutorial_placa.pdf`)**](./docs/tutorial_placa.pdf) — Como sintetizar, gerar o bitstream, gravar na Basys 3 e conferir os bits nos LEDs.
+* 📘 [**Documentação Técnica (`docs/documentacao_projeto.pdf`)**](./docs/documentacao_projeto.pdf)
+* 🧪 [**Tutorial de Simulação (`docs/tutorial_simulacao.pdf`)**](./docs/tutorial_simulacao.pdf)
+* 🔌 [**Tutorial de Gravação na Placa (`docs/tutorial_placa.pdf`)**](./docs/tutorial_placa.pdf)
+* 📈 [**Tutorial da Saída PMOD / Osciloscópio (`saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf`)**](./saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf)
+* 🖥️ [**Tutorial da Saída VGA (`saidas/vga/docs/tutorial_vga.pdf`)**](./saidas/vga/docs/tutorial_vga.pdf)
 
 ---
 
-## 🚀 Por Onde Começar
+## 🚀 Como Executar Rapidamente
 
-### Para uma simulação rápida (2 minutos):
-1. Abra o **Vivado** e carregue o projeto em `vivado_project/manchester.xpr`.
-2. No painel *Flow Navigator*, clique em **Run Simulation** $ightarrow$ **Run Behavioral Simulation**.
-
-### Para reproduzir o projeto do zero:
-1. **Entenda o circuito** lendo a [Documentação Técnica](./docs/documentacao_projeto.pdf).
-2. **Simule no Vivado** seguindo o [Tutorial de Simulação](./docs/tutorial_simulacao.pdf).
-3. **Grave na placa Basys 3** seguindo o [Tutorial de Placa](./docs/tutorial_placa.pdf).
-4. **Explore as saídas adicionais** acessando as pastas de [Saída PMOD](./saidas/pmod_osciloscopio/) e [Saída VGA](./saidas/vga/).
-
----
-
-## 📡 Saídas PMOD e VGA
-
-* [**Saída pelo PMOD para Osciloscópio**](./saidas/pmod_osciloscopio/) — Disponibiliza `data_out` no pino `JA1` (`J1`) e `data_raw` no pino `JA2` (`L2`) a 1 kbit/s (`CYCLES_PER_BIT = 100_000`) para captura simultânea em dois canais do osciloscópio.
-* [**Saída VGA com Cores Pulsantes**](./saidas/vga/) — Apresenta o nível lógico instantâneo do código Manchester em tela cheia (640×480 @ 60 Hz) num monitor externo.
-
----
-
-## ➡️ Próximo Passo
-
-Após concluir este projeto, siga para o [**Projeto 2 — Codificação Manchester Diferencial**](../manchester_diferencial/), que implementa a codificação diferencial baseada na presença ou ausência de transição no início do intervalo de bit.
+1. **Para Simular:** Abra `vivado_project/manchester.xpr` no Vivado e clique em **Run Simulation → Run Behavioral Simulation**.
+2. **Para Gravar na Basys 3:** Em **Open Hardware Manager → Program Device**, selecione `vivado_project/manchester_top.bit`.
+3. **Para Ver no Osciloscópio e no VGA:** Acesse os guias específicos em [`saidas/pmod_osciloscopio/`](./saidas/pmod_osciloscopio/) e [`saidas/vga/`](./saidas/vga/).
+4. **Próximo Passo:** Conheça o [**Projeto 2 — Codificação Manchester Diferencial**](../manchester_diferencial/).

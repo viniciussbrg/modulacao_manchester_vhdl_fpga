@@ -1,47 +1,50 @@
-# Saída pelo PMOD para Osciloscópio — Manchester (IEEE 802.3)
+# Saída PMOD para Osciloscópio — Codificação Manchester (IEEE 802.3)
 
-Disponibiliza simultaneamente o **sinal codificado em Manchester (`data_out`)** e o **dado NRZ original (`data_raw`)** em dois pinos do conector **PMOD JA** da placa Basys 3, permitindo visualizar e comparar as duas formas de onda em tempo real em um osciloscópio físico de dois canais.
+Esta pasta contém os arquivos e o passo a passo para conectar um osciloscópio (como o **Digilent Analog Discovery 3**) ao conector **PMOD `JA`** da placa **Basys 3** e visualizar a onda elétrica do código **Manchester (IEEE 802.3)** em tempo real.
 
-## 🎯 O que esta saída implementa e por quê
+---
 
-Nos LEDs da placa, utiliza-se `CYCLES_PER_BIT = 100_000_000` ($T_b = 1	ext{ s}$, frequência de $1	ext{ Hz}$) para que o olho humano consiga acompanhar a troca de metades de bit. Entretanto, em um osciloscópio, sinais de $1	ext{ Hz}$ exigem varredura lenta (modo *Roll*). Por isso, o módulo de topo `manchester_top.vhd` instancia um segundo codificador (`u_fast`) parametrizado com `CPB_SCOPE = 100_000`, gerando uma taxa de bits de **$1	ext{ kbit/s}$** ($T_b = 1	ext{ ms}$, meia duração de bit de $500	ext{ }\mu	ext{s}$), ideal para disparo (*trigger*) estável na tela do osciloscópio.
+## ⚡ Por que a saída PMOD usa 1 kHz em vez de 1 Hz?
 
-Além disso, tanto `data_out` quanto `data_raw` saem diretamente de flip-flops internos (`enc` e `cur_bit`), eliminando *glitches* combinacionais na captura do osciloscópio.
+Nos LEDs da placa, usamos **1 bit por segundo (1 Hz)** para que o olho humano consiga acompanhar cada piscada. Porém, no osciloscópio, 1 Hz é lento demais para formar uma imagem parada confortável. Por isso, o módulo [`manchester_top.vhd`](./src/manchester_top.vhd) possui uma segunda instância (`u_fast`) configurada com `CPB_SCOPE = 100_000`:
 
-## 📂 Estrutura desta Pasta
+$$T_b = \frac{100.000}{100\text{ MHz}} = 1\text{ ms por bit} \implies f_{bit} = 1\text{ kHz (1.000 bits/s)}$$
 
-```text
-pmod_osciloscopio/
-├── README.md                        # Este arquivo
-├── src/
-│   ├── manchester.vhd               # Codificador Manchester parametrizável
-│   └── manchester_top.vhd           # Top-level com instância u_fast (CPB_SCOPE = 100_000)
-├── constraints/
-│   └── manchester.xdc               # Constraint mapeando JA1 (J1) e JA2 (L2)
-└── docs/
-    ├── tutorial_pmod.pdf            # Tutorial passo a passo de conexão e captura no osciloscópio
-    └── midia/
-        └── osciloscopio_manchester.png
-```
+Assim, cada bit dura **1,0 ms** (sendo **0,5 ms** na primeira metade e **0,5 ms** na segunda metade), enquanto os LEDs continuam rodando a 1 segundo por bit simultaneamente!
 
-## 🧰 Equipamentos Necessários
+---
 
-* Placa FPGA **Digilent Basys 3** programada;
-* **Osciloscópio digital de 2 canais**;
-* 2 pontas de prova (com garras de aterramento) e fios *jumper* macho-fêmea para fácil acesso ao conector **PMOD JA**.
+## 🔌 Como Conectar os Fios (Basys 3 + Analog Discovery 3)
 
-## 🔌 Conexões Físicas no Conector PMOD JA
+Olhando a **Basys 3 de frente**, localize o conector preto **`JA`** no **topo da lateral esquerda** (logo abaixo do LED vermelho `POWER`).
 
-| Canal do Osciloscópio | Pino no PMOD JA | Pino da FPGA (Artix-7) | Sinal no VHDL | Função |
-| :---: | :---: | :---: | :---: | :--- |
-| **Canal 1 (CH1)** | **JA1** (pino 1) | `J1` (`LVCMOS33`) | `data_out` | Sinal codificado em Manchester (IEEE 802.3) |
-| **Canal 2 (CH2)** | **JA2** (pino 2) | `L2` (`LVCMOS33`) | `data_raw` | Bit NRZ original em transmissão (`cur_bit`) |
-| **Garras GND** | **GND** (pino 5 ou 11) | `GND` | Referência 0 V | Terra comum entre a Basys 3 e o osciloscópio |
+| Pino no PMOD `JA` | Posição Física no Conector `JA` | Pino da FPGA | Sinal VHDL | Fio do Analog Discovery 3 (ou Osciloscópio) |
+| :--- | :--- | :---: | :--- | :--- |
+| **`JA1`** | **1º furo de baixo para cima** (fileira externa, marcado com `1`) | `J1` | **`data_out`** (Manchester 1 kHz) | **Fio Laranja liso (`1+` / Canal 1)** |
+| **`JA2`** | **2º furo de baixo para cima** (logo acima do `JA1`) | `L2` | **`data_raw`** (Bit NRZ original 1 kHz) | **Fio Azul liso (`2+` / Canal 2)** |
+| **`JA5` (`GND`)** | **5º furo de baixo para cima** (marcado como `GND` na placa) | `GND` | **Terra (0 V)** | **Fio Laranja/Branco (`1-`) + Fio Preto (`GND`)** |
+| **`JA11` (`GND`)** | **5º furo da fileira interna** (ao lado do `JA5`) | `GND` | **Terra (0 V)** | **Fio Azul/Branco (`2-`)** |
 
-## 🚀 Como Reproduzir
+> ⚠️ **Importante no Analog Discovery 3:** Sempre conecte os fios negativos listrados (`1-` Laranja/Branco e `2-` Azul/Branco) nos pinos **`GND`** (`JA5` / `JA11`) da Basys 3, pois as entradas do AD3 são diferenciais. Nunca conecte nada nos pinos `JA6` ou `JA12` (`3V3`).
 
-Consulte o [**Tutorial Completo da Saída PMOD (`tutorial_pmod.pdf`)**](./docs/tutorial_pmod.pdf), que detalha:
-1. Conexão física das pontas de prova nos pinos `JA1` (`J1`), `JA2` (`L2`) e `GND`;
-2. Gravação do bitstream na Basys 3 e configuração da palavra de teste nos switches (ex.: `0xB2A5`);
-3. Ajuste da escala vertical (`2 V/div`), base de tempo horizontal (`1,0 ms/div`) e *trigger* no osciloscópio;
-4. Conferência das transições de descida (`0`) e subida (`1`) no meio de cada bit.
+---
+
+## 📈 Configuração no Software WaveForms e Captura Real
+
+1. Abra o **Digilent WaveForms** e clique em **`Scope`**.
+2. Em **Channel 1 (`1+`)**: configure `Range = 1 V/div` e `Offset = -1.8 V`.
+3. Em **Time (Base de Tempo)**: configure `Base = 2.5 ms/div` (ou `1 ms/div`).
+4. Em **Trigger**: selecione `Mode = Repeated`, `Source = Channel 1`, `Condition = Rising` (`1.65 V`).
+
+![Captura Real no Osciloscópio Analog Discovery 3 — Manchester](./docs/midia/osciloscopio_manchester.png)
+
+### Como ler o gráfico acima:
+* O sinal oscila de **0 V** (nível lógico `'0'`) até **3,3 V** (nível lógico `'1'`).
+* Os pulsos estreitos duram **0,5 ms** (meio bit) e os pulsos largos duram **1,0 ms** (duas metades iguais vizinhas quando ocorre troca de `'0'` para `'1'` ou de `'1'` para `'0'`).
+* Em **todo centro de bit** há uma transição garantida: **descida (`3,3 V → 0 V`)** quando o switch vale `'0'` e **subida (`0 V → 3,3 V`)** quando o switch vale `'1'`.
+
+---
+
+## 📄 Documentação Completa
+
+* 📈 [**Tutorial Completo da Saída PMOD (`docs/tutorial_pmod.pdf`)**](./docs/tutorial_pmod.pdf)

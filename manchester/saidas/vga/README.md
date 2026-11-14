@@ -1,42 +1,40 @@
-# Saída VGA com Cores Pulsantes — Manchester (IEEE 802.3)
+# Saída VGA com Cores Pulsantes — Codificação Manchester (IEEE 802.3)
 
-Utiliza o conector **VGA (DB15)** da placa Basys 3 para apresentar visualmente o sinal codificado em Manchester em um monitor externo (resolução **640×480 @ 60 Hz**), alternando a cor de tela cheia conforme o nível lógico instantâneo do sinal codificado.
+Esta pasta contém o controlador de vídeo [`vga_pulse.vhd`](./src/vga_pulse.vhd) e o guia para observar o código **Manchester (IEEE 802.3)** em um **monitor VGA externo (640×480 @ 60 Hz)** conectado à placa **Basys 3**.
 
-## 🎯 O que esta saída implementa e por quê
+---
 
-O módulo `vga_pulse.vhd` gera os sinais de sincronismo horizontal (`vga_hs`) e vertical (`vga_vs`) do padrão industrial VGA 640×480 @ 60 Hz a partir de um *pixel clock* de **25 MHz** (obtido dividindo o clock de 100 MHz da Basys 3 por 4). Durante a região ativa de vídeo ($640 	imes 480$ pixels), os barramentos de cor de 4 bits (`vga_r`, `vga_g`, `vga_b`) são acionados em função do nível atual do sinal codificado lento (`sig_slow`, com $1	ext{ s/bit}$):
+## 🖥️ Como Funciona a Visualização no Monitor VGA?
 
-* **Sinal em Nível Baixo (`'0'`):** Tela inteira em **Azul** (`vga_r = "0000"`, `vga_g = "0000"`, `vga_b = "1111"`);
-* **Sinal em Nível Alto (`'1'`):** Tela inteira em **Amarelo/Claro** (`vga_r = "1111"`, `vga_g = "1111"`, `vga_b = "0000"`).
+Para transformar os bits da codificação Manchester em uma demonstração visual de alto impacto em sala de aula ou laboratório, o controlador [`vga_pulse.vhd`](./src/vga_pulse.vhd) gera um sinal de vídeo de **640×480 pixels a 60 quadros por segundo** (usando um *pixel clock* de **25 MHz** obtido dividindo o clock de 100 MHz da Basys 3 por 4).
 
-Dessa forma, a tela pisca exatamente em sincronia com o LED ativo da placa: na codificação **Manchester (IEEE 802.3)**, um bit `'1'` exibe **0,5 s de tela Azul seguido de 0,5 s de tela Amarela/Clara**, enquanto um bit `'0'` exibe **0,5 s de tela Amarela/Clara seguido de 0,5 s de tela Azul**.
+O módulo recebe o sinal codificado lento (`slow_out`, de **1 segundo por bit**) e pinta a **tela inteira do monitor** de acordo com o nível lógico instantâneo do código Manchester:
 
-## 📂 Estrutura desta Pasta
+| Estado do Sinal Manchester (`data_out`) | Quando ocorre (Padrão IEEE 802.3) | Cor Exibida em Tela Cheia |
+| :---: | :--- | :--- |
+| **Nível Baixo (`'0'` = 0 V)** | • 2ª metade do bit `'0'`<br>• 1ª metade do bit `'1'`<br>• Enquanto o botão `BTNC` (Reset) estiver pressionado | **Azul / Magenta** (`vgaBlue = "1111"`) |
+| **Nível Alto (`'1'` = 3,3 V)** | • 1ª metade do bit `'0'`<br>• 2ª metade do bit `'1'` | **Amarelo / Ciano Claro** (`vgaRed/vgaGreen = "1111"`) |
 
-```text
-vga/
-├── README.md                        # Este arquivo
-├── src/
-│   ├── manchester.vhd               # Codificador Manchester
-│   ├── vga_pulse.vhd                # Controlador VGA 640x480 @ 60Hz
-│   └── manchester_top.vhd           # Top-level integrando codificador e controlador VGA
-├── constraints/
-│   └── manchester.xdc               # Constraint com mapeamento RGB (12 bits) e HSYNC/VSYNC
-└── docs/
-    ├── tutorial_vga.pdf             # Tutorial passo a passo da saída VGA
-    └── midia/
-        └── vga_cores_pulsantes.png
-```
+![Estados Visuais da Saída VGA](./docs/midia/vga_cores_pulsantes.png)
 
-## 🧰 Equipamentos Necessários
+### O que você observa na prática:
+* Se uma chave estiver em **`'0'`** (abaixada), durante o 1 segundo daquele bit o monitor começa na cor **Clara (Alto)** por `0,5 s` e muda no meio para a cor **Escura/Azul (Baixo)** por `0,5 s`.
+* Se uma chave estiver em **`'1'`** (levantada), o monitor começa na cor **Escura/Azul (Baixo)** por `0,5 s` e muda no meio para a cor **Clara (Alto)** por `0,5 s`.
+* A mudança de cor no monitor acontece **exatamente no mesmo instante** em que o LED correspondente na placa Basys 3 acende ou apaga!
 
-* Placa FPGA **Digilent Basys 3**;
-* **Monitor com entrada VGA** (compatível com 640×480 @ 60 Hz);
-* **Cabo VGA** (DB15 macho-macho).
+---
 
-## 🚀 Como Reproduzir
+## 🔌 Pinos Utilizados na Basys 3
 
-Consulte o [**Tutorial Completo da Saída VGA (`tutorial_vga.pdf`)**](./docs/tutorial_vga.pdf), que descreve:
-1. Conexão do cabo VGA entre a placa Basys 3 e o monitor externo;
-2. Gravação do bitstream e seleção da sequência de bits nos switches `SW15..SW0`;
-3. Observação das duas metades de cada bit pelas cores pulsantes na tela em sincronia com os LEDs `LD15..LD0`.
+O conector **VGA (DB15)** fica na borda superior central da placa Basys 3:
+* **Sincronismo Horizontal (`Hsync`):** Pino `P19`
+* **Sincronismo Vertical (`Vsync`):** Pino `R19`
+* **Canal Vermelho 4 bits (`vgaRed[3:0]`):** Pinos `N19`, `J19`, `H19`, `G19`
+* **Canal Verde 4 bits (`vgaGreen[3:0]`):** Pinos `D17`, `G17`, `H17`, `J17`
+* **Canal Azul 4 bits (`vgaBlue[3:0]`):** Pinos `J18`, `K18`, `L18`, `N18`
+
+---
+
+## 📄 Documentação Completa
+
+* 🖥️ [**Tutorial Completo da Saída VGA (`docs/tutorial_vga.pdf`)**](./docs/tutorial_vga.pdf)
