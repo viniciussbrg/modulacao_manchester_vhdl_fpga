@@ -1,7 +1,9 @@
 # Codificação Manchester em VHDL
 
 Faculdade Engenheiro Salvador Arena — Engenharia da Computação
+
 Comunicação de Dados — Sistemas Reconfiguráveis 
+
 Professor Vinicius Borges · 7º semestre.
 
 | Nome | RA |
