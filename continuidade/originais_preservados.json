@@ -1,0 +1,282 @@
+[
+  {
+    "arquivo": "manchester/docs/tutorial_simulacao.pdf",
+    "categoria": "pdf_aprovado",
+    "sha256": "bb421bccbf30956d7eb0a3e016f72a27572744aca7a3429873df153dd44cb3f6"
+  },
+  {
+    "arquivo": "manchester_diferencial/docs/tutorial_simulacao.pdf",
+    "categoria": "pdf_aprovado",
+    "sha256": "7f499ad9e97728b55ee623acfc3457d3f67b67be0156990ed1e60b7d3ba318ca"
+  },
+  {
+    "arquivo": "manchester/saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf",
+    "categoria": "pdf_aprovado",
+    "sha256": "93b9594c891bfb72f3d15b7b7c8211ab52d62c30b67db89cdd9086ada44a92a2"
+  },
+  {
+    "arquivo": "manchester_diferencial/saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf",
+    "categoria": "pdf_aprovado",
+    "sha256": "640f2ea7b7384e19e7c285fbf9a1238608f41b08148cf3f47626c2772c0ee640"
+  },
+  {
+    "arquivo": "referencias/professor/enunciado.pdf",
+    "categoria": "guia_professor",
+    "sha256": "eb5db223b4497e79760c7d1e91a634e1552996bdd9b9cefd33f45fffb7f6e640"
+  },
+  {
+    "arquivo": "referencias/professor/guia_documentacao.pdf",
+    "categoria": "guia_professor",
+    "sha256": "19126bcb6139630baedc65d21dfa821c59cc34405040d8ac0db4bbec17bda3fe"
+  },
+  {
+    "arquivo": "referencias/professor/guia_entrega.pdf",
+    "categoria": "guia_professor",
+    "sha256": "999deb86dffeddccb21742d8deddc023e86d8ebdf824ee31e3833259e7acb31c"
+  },
+  {
+    "arquivo": "continuidade/fontes_fpga_originais/constraints.xdc",
+    "categoria": "fonte_original",
+    "sha256": "c1fe0c166dcf9bbb1dafe520fc0b3357230cab836275725e2972b13a8f8df938"
+  },
+  {
+    "arquivo": "continuidade/fontes_fpga_originais/manchester.vhd",
+    "categoria": "fonte_original",
+    "sha256": "e404572a886765adf1cdf23a0b03ad2a6cec7ec76ecfbe5a9f17eeca252bac3a"
+  },
+  {
+    "arquivo": "continuidade/fontes_fpga_originais/manchester_dif.vhd",
+    "categoria": "fonte_original",
+    "sha256": "3415ff0d90a6862c7a93fdc095ac7bef91ef27ab0749bbffab8b8887a140149d"
+  },
+  {
+    "arquivo": "continuidade/fontes_fpga_originais/manchester_dif_tb.vhd",
+    "categoria": "fonte_original",
+    "sha256": "c3b1cac4062b27c52df84cd534f1e1a1fc67fd6f4318fd0ac5e77dc5ca0db311"
+  },
+  {
+    "arquivo": "continuidade/fontes_fpga_originais/manchester_tb.vhd",
+    "categoria": "fonte_original",
+    "sha256": "952e81b5b29f8555100bbf4b4385ab9ac0b6a871064499181d5c2467d781ec99"
+  },
+  {
+    "arquivo": "continuidade/fontes_fpga_originais/top_manchester_vga.vhd",
+    "categoria": "fonte_original",
+    "sha256": "6ad4844f2b07bd005ff290baa769d48d84bbf7920b8fec3af32949bdeda49e8b"
+  },
+  {
+    "arquivo": "continuidade/pacotes_fontes_aprovados/fontes_tutoriais_simulacao.zip",
+    "categoria": "arquivo_fontes_aprovado",
+    "sha256": "302e425ff9c3c876637e73b47fa340d103fd48f5fc559b201a4733af5eb5c691"
+  },
+  {
+    "arquivo": "continuidade/pacotes_fontes_aprovados/fontes_tutoriais_pmod.zip",
+    "categoria": "arquivo_fontes_aprovado",
+    "sha256": "cb47fbd353bc3289036b340969d30f16cbdf83eeba9c9529be87c51b7349d193"
+  },
+  {
+    "arquivo": "manchester/src/manchester.vhd",
+    "categoria": "copia_fonte",
+    "sha256": "e404572a886765adf1cdf23a0b03ad2a6cec7ec76ecfbe5a9f17eeca252bac3a"
+  },
+  {
+    "arquivo": "manchester/sim/manchester_tb.vhd",
+    "categoria": "copia_testbench",
+    "sha256": "952e81b5b29f8555100bbf4b4385ab9ac0b6a871064499181d5c2467d781ec99"
+  },
+  {
+    "arquivo": "manchester/saidas/pmod_osciloscopio/src/manchester.vhd",
+    "categoria": "copia_fonte_saida",
+    "sha256": "e404572a886765adf1cdf23a0b03ad2a6cec7ec76ecfbe5a9f17eeca252bac3a"
+  },
+  {
+    "arquivo": "manchester/saidas/vga/src/manchester.vhd",
+    "categoria": "copia_fonte_saida",
+    "sha256": "e404572a886765adf1cdf23a0b03ad2a6cec7ec76ecfbe5a9f17eeca252bac3a"
+  },
+  {
+    "arquivo": "manchester/saidas/vga/src/top_manchester_vga.vhd",
+    "categoria": "copia_integracao_vga",
+    "sha256": "6ad4844f2b07bd005ff290baa769d48d84bbf7920b8fec3af32949bdeda49e8b"
+  },
+  {
+    "arquivo": "manchester_diferencial/src/manchester_dif.vhd",
+    "categoria": "copia_fonte",
+    "sha256": "3415ff0d90a6862c7a93fdc095ac7bef91ef27ab0749bbffab8b8887a140149d"
+  },
+  {
+    "arquivo": "manchester_diferencial/sim/manchester_dif_tb.vhd",
+    "categoria": "copia_testbench",
+    "sha256": "c3b1cac4062b27c52df84cd534f1e1a1fc67fd6f4318fd0ac5e77dc5ca0db311"
+  },
+  {
+    "arquivo": "manchester_diferencial/saidas/pmod_osciloscopio/src/manchester_dif.vhd",
+    "categoria": "copia_fonte_saida",
+    "sha256": "3415ff0d90a6862c7a93fdc095ac7bef91ef27ab0749bbffab8b8887a140149d"
+  },
+  {
+    "arquivo": "manchester_diferencial/saidas/vga/src/manchester_dif.vhd",
+    "categoria": "copia_fonte_saida",
+    "sha256": "3415ff0d90a6862c7a93fdc095ac7bef91ef27ab0749bbffab8b8887a140149d"
+  },
+  {
+    "arquivo": "manchester/docs/midia/image(2).png",
+    "categoria": "evidencia_original",
+    "sha256": "134affa8718815b19719c68394495b896d18bae8c7227acd87399e00c0ff1c4c"
+  },
+  {
+    "arquivo": "manchester/docs/midia/image(5).png",
+    "categoria": "evidencia_original",
+    "sha256": "f6aa8950939ea67ae0d2cf20de0fc87564e6b68d2bf280e51cc8cbce0e3c1f81"
+  },
+  {
+    "arquivo": "manchester/docs/midia/image(6).png",
+    "categoria": "evidencia_original",
+    "sha256": "6156f1f8c673b42bfe76e197be73bdd397ce6e8609fdfaf076e3d8a1a2d746ce"
+  },
+  {
+    "arquivo": "manchester/docs/midia/image(20261113-234828).png",
+    "categoria": "evidencia_original",
+    "sha256": "662f2cda593ab4b3f584b9ddf929d637497705b26a8b9fcfed69cb384d6a8a96"
+  },
+  {
+    "arquivo": "manchester_diferencial/docs/midia/image(3).png",
+    "categoria": "evidencia_original",
+    "sha256": "087b4a6ae363c3e4db96bb3044515521622d2311eadc4a718689c21cb7a165ce"
+  },
+  {
+    "arquivo": "manchester_diferencial/docs/midia/image(4).png",
+    "categoria": "evidencia_original",
+    "sha256": "49165f1e2c137f737e4a13b9d0a9a7812f7328f04321a4780394c2ffbc4095f5"
+  },
+  {
+    "arquivo": "manchester_diferencial/docs/midia/image(7).png",
+    "categoria": "evidencia_original",
+    "sha256": "e3a6fa35dab3b474dee3081ec36577dd56707be3c1098f621391f4ea3564bdeb"
+  },
+  {
+    "arquivo": "manchester_diferencial/docs/midia/image(8).png",
+    "categoria": "evidencia_original",
+    "sha256": "5853dd2247d18a3561365b123a6bb39a816bf4e394946bb9a4dc42cfcc1becdd"
+  },
+  {
+    "arquivo": "manchester/saidas/pmod_osciloscopio/docs/midia/image(2).png",
+    "categoria": "evidencia_original",
+    "sha256": "134affa8718815b19719c68394495b896d18bae8c7227acd87399e00c0ff1c4c"
+  },
+  {
+    "arquivo": "manchester/saidas/pmod_osciloscopio/docs/midia/image(20261114-012554).png",
+    "categoria": "evidencia_original",
+    "sha256": "7604460ae6ef574162cc19b5913361244bf8df725b07a76cfa53c5ad9c7ba018"
+  },
+  {
+    "arquivo": "manchester/saidas/pmod_osciloscopio/docs/midia/image(20261114-012606).png",
+    "categoria": "evidencia_original",
+    "sha256": "2ef9e053585b5420e485bb3850277e3d65769695f7e0c8e962f422894f2f32f2"
+  },
+  {
+    "arquivo": "manchester/saidas/pmod_osciloscopio/docs/midia/image(20261114-012618).png",
+    "categoria": "evidencia_original",
+    "sha256": "bf8274ec3e8e0e4943704ce1faf8bfc06c7f9458573e868a14ebdf8b4d60e617"
+  },
+  {
+    "arquivo": "manchester/saidas/pmod_osciloscopio/docs/midia/image(20261114-013716).png",
+    "categoria": "evidencia_original",
+    "sha256": "76568ef1082df24957f0a90204ba38bb0d0463ad66076cc4f399613e57c4a79a"
+  },
+  {
+    "arquivo": "manchester/saidas/pmod_osciloscopio/docs/midia/image(20261114-013749).png",
+    "categoria": "evidencia_original",
+    "sha256": "4b5422f79358ead9c959bd37ec5305723cf3a13bd7b35264b925ae15c2ab7467"
+  },
+  {
+    "arquivo": "manchester/saidas/pmod_osciloscopio/docs/midia/image(3).png",
+    "categoria": "evidencia_original",
+    "sha256": "087b4a6ae363c3e4db96bb3044515521622d2311eadc4a718689c21cb7a165ce"
+  },
+  {
+    "arquivo": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(20261114-012554).png",
+    "categoria": "evidencia_original",
+    "sha256": "7604460ae6ef574162cc19b5913361244bf8df725b07a76cfa53c5ad9c7ba018"
+  },
+  {
+    "arquivo": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(20261114-012606).png",
+    "categoria": "evidencia_original",
+    "sha256": "2ef9e053585b5420e485bb3850277e3d65769695f7e0c8e962f422894f2f32f2"
+  },
+  {
+    "arquivo": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(20261114-012618).png",
+    "categoria": "evidencia_original",
+    "sha256": "bf8274ec3e8e0e4943704ce1faf8bfc06c7f9458573e868a14ebdf8b4d60e617"
+  },
+  {
+    "arquivo": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(20261114-013848).png",
+    "categoria": "evidencia_original",
+    "sha256": "20817272753f2f5ea3ba49a55f880ff86347766acc690958e2a3be17b702d0ca"
+  },
+  {
+    "arquivo": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(20261114-014044).png",
+    "categoria": "evidencia_original",
+    "sha256": "c9b8d21c1efbe40724bfe7078cb1314d8af4ad0b9412a6aacda70ef980722631"
+  },
+  {
+    "arquivo": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(3).png",
+    "categoria": "evidencia_original",
+    "sha256": "087b4a6ae363c3e4db96bb3044515521622d2311eadc4a718689c21cb7a165ce"
+  },
+  {
+    "arquivo": "continuidade/capturas_historicas/image(1).png",
+    "categoria": "captura_historica_nao_usada",
+    "sha256": "1f559043e54aaa7a3a7034b56625b518be718d38e52836789a8850e16f1bb861"
+  },
+  {
+    "arquivo": "continuidade/capturas_historicas/image(10).png",
+    "categoria": "captura_historica_nao_usada",
+    "sha256": "8c4db71e5cec53cbfe7e991c9c03bf5123909b228838155e8d4b01e15fbac70a"
+  },
+  {
+    "arquivo": "continuidade/capturas_historicas/image(20261113-234530).png",
+    "categoria": "captura_historica_nao_usada",
+    "sha256": "c56f94ba7c20c2b849aa4eeae5f2f862ecc8f4ffbee88f8159e94169a3e672b9"
+  },
+  {
+    "arquivo": "continuidade/capturas_historicas/image(20261114-005109).png",
+    "categoria": "captura_historica_nao_usada",
+    "sha256": "8c5ec4b978348aaad239f80e03d4273e786361445efd13191b330d3bd0605a5a"
+  },
+  {
+    "arquivo": "continuidade/capturas_historicas/image(9).png",
+    "categoria": "captura_historica_nao_usada",
+    "sha256": "5853dd2247d18a3561365b123a6bb39a816bf4e394946bb9a4dc42cfcc1becdd"
+  },
+  {
+    "arquivo": "ferramentas/documentacao/fontes/DejaVuSans.ttf",
+    "categoria": "fonte_tipografica",
+    "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e"
+  },
+  {
+    "arquivo": "ferramentas/documentacao/fontes/DejaVuSans-Bold.ttf",
+    "categoria": "fonte_tipografica",
+    "sha256": "a4c5bc453ca281d90ea079e596da7ae0dfeb5777497c29ec254e76d97ff6f890"
+  },
+  {
+    "arquivo": "ferramentas/documentacao/fontes/DejaVuSans-Oblique.ttf",
+    "categoria": "fonte_tipografica",
+    "sha256": "e2f09289f4276309a36b9a93e5a0ac64957ef3eb7158151b243d41f667151ee4"
+  },
+  {
+    "arquivo": "ferramentas/documentacao/fontes/DejaVuSans-BoldOblique.ttf",
+    "categoria": "fonte_tipografica",
+    "sha256": "c35383d5e56add5cc9cdc9f4e4a899f9e540f7c7e49f1901074c2d03af194eff"
+  },
+  {
+    "arquivo": "ferramentas/documentacao/fontes/DejaVuSansMono.ttf",
+    "categoria": "fonte_tipografica",
+    "sha256": "54bf827eb99404e8f430c330ad30f063334f637eba0109b6a18d4f566a8e9dd8"
+  },
+  {
+    "arquivo": "ferramentas/documentacao/fontes/LICENCA.txt",
+    "categoria": "licenca_fonte",
+    "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+  }
+]

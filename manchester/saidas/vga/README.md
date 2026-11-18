@@ -1,0 +1,13 @@
+# Saída VGA — Manchester básico
+
+O [top de vídeo](src/top_manchester_vga.vhd) instancia o [codificador](src/manchester.vhd). Durante a área visível, o nível baixo seleciona verde (RGB hexadecimal 0C0) e o alto seleciona branco (FFF). Durante o apagamento, as três componentes ficam em zero.
+
+O circuito conta 2.200 períodos de pixel por linha e 1.125 linhas por quadro. Com o `clk_wiz_0` configurado para 148,5 MHz, a área ativa é de 1920 × 1080 pixels a 60 Hz. O [XDC](constraints/constraints.xdc) contém os sinais RGB de quatro bits por cor e os sincronismos horizontal e vertical.
+
+## Observação prevista
+
+1. Conecte a Basys 3 a um monitor compatível por cabo VGA e selecione a entrada VGA do monitor.
+2. Utilize o [projeto e o bitstream deste codificador](../../vivado_project/README.md).
+3. Configure SW15 a SW0 e pressione BTNC. Com reset atendido, o nível codificado fica baixo. Ao soltar BTNC, acompanhe a mudança de cor em cada metade de bit e compare com o LED da posição atual.
+
+O tutorial VGA e as fotos ou o vídeo do monitor em operação continuam pendentes. As cores acima descrevem as atribuições de saída no VHDL.

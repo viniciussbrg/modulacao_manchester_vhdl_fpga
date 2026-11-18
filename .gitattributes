@@ -1,0 +1,18 @@
+* text=auto
+*.md text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.vhd -text
+*.xdc -text
+*.pdf binary
+*.png binary
+*.jpg binary
+*.zip binary
+*.ttf binary
+*.bit binary
+
+# Preservar os bytes importados do projeto Vivado.
+*.xpr -text
+*.xci -text
+*.wcfg -text
+*.dcp binary

@@ -1,0 +1,22 @@
+[
+  {
+    "gerado": "tutorial_simulacao_manchester.pdf",
+    "destino": "manchester/docs/tutorial_simulacao.pdf",
+    "paginas": 8
+  },
+  {
+    "gerado": "tutorial_simulacao_manchester_diferencial.pdf",
+    "destino": "manchester_diferencial/docs/tutorial_simulacao.pdf",
+    "paginas": 8
+  },
+  {
+    "gerado": "tutorial_pmod_manchester.pdf",
+    "destino": "manchester/saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf",
+    "paginas": 11
+  },
+  {
+    "gerado": "tutorial_pmod_manchester_diferencial.pdf",
+    "destino": "manchester_diferencial/saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf",
+    "paginas": 11
+  }
+]

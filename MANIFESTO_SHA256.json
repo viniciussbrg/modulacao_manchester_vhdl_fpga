@@ -1,0 +1,497 @@
+{
+  "pacote": "FACULDADE_N2B2_CONTINUIDADE_CODEX",
+  "data": "2026-11-17",
+  "observacao": "Manifesto dos arquivos originais do pacote; exclui este próprio manifesto e resultados temporários de geração.",
+  "arquivos": [
+    {
+      "caminho": ".gitattributes",
+      "bytes": 167,
+      "sha256": "e06fa5129269e1d84a74628f761c6dd875b9a62b213b70de95ea078c8f1a3c16"
+    },
+    {
+      "caminho": ".gitignore",
+      "bytes": 359,
+      "sha256": "b3fbaeef9519c920caac2a5063f3a016aa15944ea3c665a59e8b0cc7eef75960"
+    },
+    {
+      "caminho": "AGENTS.md",
+      "bytes": 4406,
+      "sha256": "5b7bdaeb2b2bef754d2a3bb8c7f2f6e5fa8372ccbae50d54d7d972c0d3629386"
+    },
+    {
+      "caminho": "CONTEXTO_PROJETO.md",
+      "bytes": 5825,
+      "sha256": "7b30c691fd3265085d92434e045c0aee15cdbac35d753314017b20bb2e325f15"
+    },
+    {
+      "caminho": "LEIA-ME_CONTINUIDADE.md",
+      "bytes": 3378,
+      "sha256": "6d03d41ec412da5805c72179133c2d4a7c115e16368e3743ccf24f8b5d1970d8"
+    },
+    {
+      "caminho": "PENDENCIAS.md",
+      "bytes": 5198,
+      "sha256": "3e7d09d43ec4498309e2565e75c42fe45d64228132967e320f626d86e61efe69"
+    },
+    {
+      "caminho": "PROMPT_CONTINUIDADE_CODEX.md",
+      "bytes": 3850,
+      "sha256": "4b57f551fde972bd15610ee0b1682d5328665bd3f7a77801ac8240a09247a285"
+    },
+    {
+      "caminho": "README.md",
+      "bytes": 2236,
+      "sha256": "9a72a40e9720c9bd727265d8b6a12f3463e10c850139b15f9927b44a80acdfdf"
+    },
+    {
+      "caminho": "continuidade/VERIFICACAO_PORTABILIDADE.json",
+      "bytes": 6681,
+      "sha256": "c0f475af86c9f40802839e6020f4a4e0a1b18e2ec084f40947b9ef5a587d4792"
+    },
+    {
+      "caminho": "continuidade/capturas_historicas/LEIA-ME.md",
+      "bytes": 321,
+      "sha256": "8505672b991c6bec85dbfec754bc50f6d85b5bfffdc5723e9315601b8922c911"
+    },
+    {
+      "caminho": "continuidade/capturas_historicas/image(1).png",
+      "bytes": 37755,
+      "sha256": "1f559043e54aaa7a3a7034b56625b518be718d38e52836789a8850e16f1bb861"
+    },
+    {
+      "caminho": "continuidade/capturas_historicas/image(10).png",
+      "bytes": 178660,
+      "sha256": "8c4db71e5cec53cbfe7e991c9c03bf5123909b228838155e8d4b01e15fbac70a"
+    },
+    {
+      "caminho": "continuidade/capturas_historicas/image(20261113-234530).png",
+      "bytes": 172743,
+      "sha256": "c56f94ba7c20c2b849aa4eeae5f2f862ecc8f4ffbee88f8159e94169a3e672b9"
+    },
+    {
+      "caminho": "continuidade/capturas_historicas/image(20261114-005109).png",
+      "bytes": 156237,
+      "sha256": "8c5ec4b978348aaad239f80e03d4273e786361445efd13191b330d3bd0605a5a"
+    },
+    {
+      "caminho": "continuidade/capturas_historicas/image(9).png",
+      "bytes": 168843,
+      "sha256": "5853dd2247d18a3561365b123a6bb39a816bf4e394946bb9a4dc42cfcc1becdd"
+    },
+    {
+      "caminho": "continuidade/fontes_fpga_originais/LEIA-ME.md",
+      "bytes": 640,
+      "sha256": "f2dc918a24c3413520485794a755f13ed355c2792e249692460dffcef9ad610e"
+    },
+    {
+      "caminho": "continuidade/fontes_fpga_originais/constraints.xdc",
+      "bytes": 4290,
+      "sha256": "c1fe0c166dcf9bbb1dafe520fc0b3357230cab836275725e2972b13a8f8df938"
+    },
+    {
+      "caminho": "continuidade/fontes_fpga_originais/manchester.vhd",
+      "bytes": 9115,
+      "sha256": "e404572a886765adf1cdf23a0b03ad2a6cec7ec76ecfbe5a9f17eeca252bac3a"
+    },
+    {
+      "caminho": "continuidade/fontes_fpga_originais/manchester_dif.vhd",
+      "bytes": 4330,
+      "sha256": "3415ff0d90a6862c7a93fdc095ac7bef91ef27ab0749bbffab8b8887a140149d"
+    },
+    {
+      "caminho": "continuidade/fontes_fpga_originais/manchester_dif_tb.vhd",
+      "bytes": 9374,
+      "sha256": "c3b1cac4062b27c52df84cd534f1e1a1fc67fd6f4318fd0ac5e77dc5ca0db311"
+    },
+    {
+      "caminho": "continuidade/fontes_fpga_originais/manchester_tb.vhd",
+      "bytes": 8682,
+      "sha256": "952e81b5b29f8555100bbf4b4385ab9ac0b6a871064499181d5c2467d781ec99"
+    },
+    {
+      "caminho": "continuidade/fontes_fpga_originais/top_manchester_vga.vhd",
+      "bytes": 4240,
+      "sha256": "6ad4844f2b07bd005ff290baa769d48d84bbf7920b8fec3af32949bdeda49e8b"
+    },
+    {
+      "caminho": "continuidade/originais_preservados.json",
+      "bytes": 11325,
+      "sha256": "d1d01969f88de1d0f9ea53fda3561ae5f19cbb5e23fa34db789af0059e03a237"
+    },
+    {
+      "caminho": "continuidade/pacotes_fontes_aprovados/fontes_tutoriais_pmod.zip",
+      "bytes": 7129694,
+      "sha256": "cb47fbd353bc3289036b340969d30f16cbdf83eeba9c9529be87c51b7349d193"
+    },
+    {
+      "caminho": "continuidade/pacotes_fontes_aprovados/fontes_tutoriais_simulacao.zip",
+      "bytes": 1366481,
+      "sha256": "302e425ff9c3c876637e73b47fa340d103fd48f5fc559b201a4733af5eb5c691"
+    },
+    {
+      "caminho": "ferramentas/documentacao/README.md",
+      "bytes": 2801,
+      "sha256": "48ae9a79b7c5c88274b77aa3de645d5407ebb29b8b6c55543ad76036903504c1"
+    },
+    {
+      "caminho": "ferramentas/documentacao/caminhos_documentacao.py",
+      "bytes": 680,
+      "sha256": "a20a01fc3602a84e911bdc82eba652e870dce66162eb60e99a87bbdab6c160ab"
+    },
+    {
+      "caminho": "ferramentas/documentacao/criar_tutoriais_pmod.py",
+      "bytes": 26498,
+      "sha256": "86611279b81606bf38a737c6124224f623e1d4a5f85825e967706abf5d39af5d"
+    },
+    {
+      "caminho": "ferramentas/documentacao/criar_tutoriais_simulacao.py",
+      "bytes": 25318,
+      "sha256": "8cc2220414b853b6b8e9e40bbba0120005b3b9ee443df6d5dcf57b8ff522fba2"
+    },
+    {
+      "caminho": "ferramentas/documentacao/documentos.json",
+      "bytes": 619,
+      "sha256": "66e284dd9af24e56e15f2110214661e5d8bf0098d59bf8f7b2661f0c08809d5d"
+    },
+    {
+      "caminho": "ferramentas/documentacao/estilo_tutoriais.py",
+      "bytes": 4281,
+      "sha256": "608eb54debcf52ddea5f1a04ad2d783498423371a9f5c37a6d645a04f45615b0"
+    },
+    {
+      "caminho": "ferramentas/documentacao/evidencias.json",
+      "bytes": 1314,
+      "sha256": "c5fd90931c39b8355211435f1307ba091ec68d5aa44fce886327af4db0bb0cff"
+    },
+    {
+      "caminho": "ferramentas/documentacao/fontes/DejaVuSans-Bold.ttf",
+      "bytes": 708920,
+      "sha256": "a4c5bc453ca281d90ea079e596da7ae0dfeb5777497c29ec254e76d97ff6f890"
+    },
+    {
+      "caminho": "ferramentas/documentacao/fontes/DejaVuSans-BoldOblique.ttf",
+      "bytes": 645600,
+      "sha256": "c35383d5e56add5cc9cdc9f4e4a899f9e540f7c7e49f1901074c2d03af194eff"
+    },
+    {
+      "caminho": "ferramentas/documentacao/fontes/DejaVuSans-Oblique.ttf",
+      "bytes": 637648,
+      "sha256": "e2f09289f4276309a36b9a93e5a0ac64957ef3eb7158151b243d41f667151ee4"
+    },
+    {
+      "caminho": "ferramentas/documentacao/fontes/DejaVuSans.ttf",
+      "bytes": 759720,
+      "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e"
+    },
+    {
+      "caminho": "ferramentas/documentacao/fontes/DejaVuSansMono.ttf",
+      "bytes": 343140,
+      "sha256": "54bf827eb99404e8f430c330ad30f063334f637eba0109b6a18d4f566a8e9dd8"
+    },
+    {
+      "caminho": "ferramentas/documentacao/fontes/LICENCA.txt",
+      "bytes": 3859,
+      "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+    },
+    {
+      "caminho": "ferramentas/documentacao/gerar.py",
+      "bytes": 1212,
+      "sha256": "9c57a1ca147fb30e12d618cda0623bde27d7a9b0d2693acb45f376a234df14b4"
+    },
+    {
+      "caminho": "ferramentas/documentacao/validar.py",
+      "bytes": 3531,
+      "sha256": "57cf3a4ebc9cbf55687e95e04bb5a4a945f5c211fa458208ddcab15da309295a"
+    },
+    {
+      "caminho": "ferramentas/documentacao/verificar_pacote.py",
+      "bytes": 970,
+      "sha256": "0efacdfd8e5dc4d5ff1e8671d965fc6fd7d585ef83e6dd4c01eba14da81d1539"
+    },
+    {
+      "caminho": "manchester/README.md",
+      "bytes": 1660,
+      "sha256": "6bed8a2b35b7fbf5221123253caa014cc20a2a6c7c3b28cae38db7b5fb3ecacd"
+    },
+    {
+      "caminho": "manchester/constraints/README.md",
+      "bytes": 481,
+      "sha256": "aab4780ea9054458ae27b3233a619fc09c9868bab0d4e7f57f8982372b84f5fa"
+    },
+    {
+      "caminho": "manchester/docs/midia/image(2).png",
+      "bytes": 197262,
+      "sha256": "134affa8718815b19719c68394495b896d18bae8c7227acd87399e00c0ff1c4c"
+    },
+    {
+      "caminho": "manchester/docs/midia/image(20261113-234828).png",
+      "bytes": 177984,
+      "sha256": "662f2cda593ab4b3f584b9ddf929d637497705b26a8b9fcfed69cb384d6a8a96"
+    },
+    {
+      "caminho": "manchester/docs/midia/image(5).png",
+      "bytes": 200904,
+      "sha256": "f6aa8950939ea67ae0d2cf20de0fc87564e6b68d2bf280e51cc8cbce0e3c1f81"
+    },
+    {
+      "caminho": "manchester/docs/midia/image(6).png",
+      "bytes": 177955,
+      "sha256": "6156f1f8c673b42bfe76e197be73bdd397ce6e8609fdfaf076e3d8a1a2d746ce"
+    },
+    {
+      "caminho": "manchester/docs/tutorial_simulacao.pdf",
+      "bytes": 611357,
+      "sha256": "bb421bccbf30956d7eb0a3e016f72a27572744aca7a3429873df153dd44cb3f6"
+    },
+    {
+      "caminho": "manchester/saidas/pmod_osciloscopio/README.md",
+      "bytes": 1016,
+      "sha256": "ba0cfcbd5508f2f610912245982f9d7d5d214bf3a5e41f1e1c17a0bc843a118d"
+    },
+    {
+      "caminho": "manchester/saidas/pmod_osciloscopio/constraints/README.md",
+      "bytes": 252,
+      "sha256": "ce897dd94df3804e4a126e5727b65d0ad38b8b5e61cd19e24f4544342671bf70"
+    },
+    {
+      "caminho": "manchester/saidas/pmod_osciloscopio/docs/midia/image(2).png",
+      "bytes": 197262,
+      "sha256": "134affa8718815b19719c68394495b896d18bae8c7227acd87399e00c0ff1c4c"
+    },
+    {
+      "caminho": "manchester/saidas/pmod_osciloscopio/docs/midia/image(20261114-012554).png",
+      "bytes": 96302,
+      "sha256": "7604460ae6ef574162cc19b5913361244bf8df725b07a76cfa53c5ad9c7ba018"
+    },
+    {
+      "caminho": "manchester/saidas/pmod_osciloscopio/docs/midia/image(20261114-012606).png",
+      "bytes": 2194403,
+      "sha256": "2ef9e053585b5420e485bb3850277e3d65769695f7e0c8e962f422894f2f32f2"
+    },
+    {
+      "caminho": "manchester/saidas/pmod_osciloscopio/docs/midia/image(20261114-012618).png",
+      "bytes": 4048857,
+      "sha256": "bf8274ec3e8e0e4943704ce1faf8bfc06c7f9458573e868a14ebdf8b4d60e617"
+    },
+    {
+      "caminho": "manchester/saidas/pmod_osciloscopio/docs/midia/image(20261114-013716).png",
+      "bytes": 125993,
+      "sha256": "76568ef1082df24957f0a90204ba38bb0d0463ad66076cc4f399613e57c4a79a"
+    },
+    {
+      "caminho": "manchester/saidas/pmod_osciloscopio/docs/midia/image(20261114-013749).png",
+      "bytes": 123531,
+      "sha256": "4b5422f79358ead9c959bd37ec5305723cf3a13bd7b35264b925ae15c2ab7467"
+    },
+    {
+      "caminho": "manchester/saidas/pmod_osciloscopio/docs/midia/image(3).png",
+      "bytes": 199917,
+      "sha256": "087b4a6ae363c3e4db96bb3044515521622d2311eadc4a718689c21cb7a165ce"
+    },
+    {
+      "caminho": "manchester/saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf",
+      "bytes": 8210624,
+      "sha256": "93b9594c891bfb72f3d15b7b7c8211ab52d62c30b67db89cdd9086ada44a92a2"
+    },
+    {
+      "caminho": "manchester/saidas/pmod_osciloscopio/src/manchester.vhd",
+      "bytes": 9115,
+      "sha256": "e404572a886765adf1cdf23a0b03ad2a6cec7ec76ecfbe5a9f17eeca252bac3a"
+    },
+    {
+      "caminho": "manchester/saidas/vga/README.md",
+      "bytes": 814,
+      "sha256": "d754ba8dce7ce38ca87b52a1f14beaa05af18f3c239ab3e14d401c928cb722a6"
+    },
+    {
+      "caminho": "manchester/saidas/vga/constraints/README.md",
+      "bytes": 238,
+      "sha256": "bc0dbe78ddc18dceafec82c1e028089bf1155b3cfc400b0407bffad2c41495df"
+    },
+    {
+      "caminho": "manchester/saidas/vga/docs/.gitkeep",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "caminho": "manchester/saidas/vga/docs/midia/.gitkeep",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "caminho": "manchester/saidas/vga/src/manchester.vhd",
+      "bytes": 9115,
+      "sha256": "e404572a886765adf1cdf23a0b03ad2a6cec7ec76ecfbe5a9f17eeca252bac3a"
+    },
+    {
+      "caminho": "manchester/saidas/vga/src/top_manchester_vga.vhd",
+      "bytes": 4240,
+      "sha256": "6ad4844f2b07bd005ff290baa769d48d84bbf7920b8fec3af32949bdeda49e8b"
+    },
+    {
+      "caminho": "manchester/sim/manchester_tb.vhd",
+      "bytes": 8682,
+      "sha256": "952e81b5b29f8555100bbf4b4385ab9ac0b6a871064499181d5c2467d781ec99"
+    },
+    {
+      "caminho": "manchester/src/manchester.vhd",
+      "bytes": 9115,
+      "sha256": "e404572a886765adf1cdf23a0b03ad2a6cec7ec76ecfbe5a9f17eeca252bac3a"
+    },
+    {
+      "caminho": "manchester/vivado_project/README.md",
+      "bytes": 426,
+      "sha256": "a0afb51ecd52eafb3e4a0dbaf721ffec81d1118741519c5df9628e7184a489ce"
+    },
+    {
+      "caminho": "manchester_diferencial/README.md",
+      "bytes": 1701,
+      "sha256": "7c1cd89345719a70ac715fea3a513c0f472415ad2f97f609b2d7de23024904db"
+    },
+    {
+      "caminho": "manchester_diferencial/constraints/README.md",
+      "bytes": 489,
+      "sha256": "fcfbe8e3f0b7ed85ed4fbd8fb96fba84b81c0f137f75581488ae7fa4fdaf4537"
+    },
+    {
+      "caminho": "manchester_diferencial/docs/midia/image(3).png",
+      "bytes": 199917,
+      "sha256": "087b4a6ae363c3e4db96bb3044515521622d2311eadc4a718689c21cb7a165ce"
+    },
+    {
+      "caminho": "manchester_diferencial/docs/midia/image(4).png",
+      "bytes": 216657,
+      "sha256": "49165f1e2c137f737e4a13b9d0a9a7812f7328f04321a4780394c2ffbc4095f5"
+    },
+    {
+      "caminho": "manchester_diferencial/docs/midia/image(7).png",
+      "bytes": 158568,
+      "sha256": "e3a6fa35dab3b474dee3081ec36577dd56707be3c1098f621391f4ea3564bdeb"
+    },
+    {
+      "caminho": "manchester_diferencial/docs/midia/image(8).png",
+      "bytes": 168843,
+      "sha256": "5853dd2247d18a3561365b123a6bb39a816bf4e394946bb9a4dc42cfcc1becdd"
+    },
+    {
+      "caminho": "manchester_diferencial/docs/tutorial_simulacao.pdf",
+      "bytes": 615619,
+      "sha256": "7f499ad9e97728b55ee623acfc3457d3f67b67be0156990ed1e60b7d3ba318ca"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/pmod_osciloscopio/README.md",
+      "bytes": 1020,
+      "sha256": "3c8b2c14869661f86f04521346cdf133844413371dd745fab89200eddaf07112"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/pmod_osciloscopio/constraints/README.md",
+      "bytes": 256,
+      "sha256": "fc4d631140b4b64e18bea21c836f5dc99815c49d5b2563658f9ebf9871765fb6"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(20261114-012554).png",
+      "bytes": 96302,
+      "sha256": "7604460ae6ef574162cc19b5913361244bf8df725b07a76cfa53c5ad9c7ba018"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(20261114-012606).png",
+      "bytes": 2194403,
+      "sha256": "2ef9e053585b5420e485bb3850277e3d65769695f7e0c8e962f422894f2f32f2"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(20261114-012618).png",
+      "bytes": 4048857,
+      "sha256": "bf8274ec3e8e0e4943704ce1faf8bfc06c7f9458573e868a14ebdf8b4d60e617"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(20261114-013848).png",
+      "bytes": 125529,
+      "sha256": "20817272753f2f5ea3ba49a55f880ff86347766acc690958e2a3be17b702d0ca"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(20261114-014044).png",
+      "bytes": 125397,
+      "sha256": "c9b8d21c1efbe40724bfe7078cb1314d8af4ad0b9412a6aacda70ef980722631"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/pmod_osciloscopio/docs/midia/image(3).png",
+      "bytes": 199917,
+      "sha256": "087b4a6ae363c3e4db96bb3044515521622d2311eadc4a718689c21cb7a165ce"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf",
+      "bytes": 8088462,
+      "sha256": "640f2ea7b7384e19e7c285fbf9a1238608f41b08148cf3f47626c2772c0ee640"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/pmod_osciloscopio/src/manchester_dif.vhd",
+      "bytes": 4330,
+      "sha256": "3415ff0d90a6862c7a93fdc095ac7bef91ef27ab0749bbffab8b8887a140149d"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/vga/README.md",
+      "bytes": 703,
+      "sha256": "60ebe23a3698c0538bcd64f3b450fa328629fc60ca79543954137fe98c1b1214"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/vga/constraints/README.md",
+      "bytes": 242,
+      "sha256": "924c52511df788583977988f2c40ff99dfce2f37d55085fa5670ebe86d65f118"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/vga/docs/.gitkeep",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/vga/docs/midia/.gitkeep",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "caminho": "manchester_diferencial/saidas/vga/src/manchester_dif.vhd",
+      "bytes": 4330,
+      "sha256": "3415ff0d90a6862c7a93fdc095ac7bef91ef27ab0749bbffab8b8887a140149d"
+    },
+    {
+      "caminho": "manchester_diferencial/sim/manchester_dif_tb.vhd",
+      "bytes": 9374,
+      "sha256": "c3b1cac4062b27c52df84cd534f1e1a1fc67fd6f4318fd0ac5e77dc5ca0db311"
+    },
+    {
+      "caminho": "manchester_diferencial/src/manchester_dif.vhd",
+      "bytes": 4330,
+      "sha256": "3415ff0d90a6862c7a93fdc095ac7bef91ef27ab0749bbffab8b8887a140149d"
+    },
+    {
+      "caminho": "manchester_diferencial/vivado_project/README.md",
+      "bytes": 442,
+      "sha256": "c33ab2e5e03fbf5d0ff003532252a2812047f51c83f5723bf36a99a498b5fb35"
+    },
+    {
+      "caminho": "referencias/professor/enunciado.pdf",
+      "bytes": 158853,
+      "sha256": "eb5db223b4497e79760c7d1e91a634e1552996bdd9b9cefd33f45fffb7f6e640"
+    },
+    {
+      "caminho": "referencias/professor/guia_documentacao.pdf",
+      "bytes": 196957,
+      "sha256": "19126bcb6139630baedc65d21dfa821c59cc34405040d8ac0db4bbec17bda3fe"
+    },
+    {
+      "caminho": "referencias/professor/guia_entrega.pdf",
+      "bytes": 140254,
+      "sha256": "999deb86dffeddccb21742d8deddc023e86d8ebdf824ee31e3833259e7acb31c"
+    },
+    {
+      "caminho": "relatorio_final/README.md",
+      "bytes": 446,
+      "sha256": "62d49b3c86b702e00bbb921b2c5499398a4521cf720bb6ec09294ad9b5ff2e08"
+    },
+    {
+      "caminho": "requirements-documentacao.txt",
+      "bytes": 62,
+      "sha256": "61948b772cb97d57ee97b8d71003885c2b8c814b904cbf3a51dc7de6bb41b82c"
+    }
+  ]
+}
