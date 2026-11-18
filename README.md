@@ -36,14 +36,11 @@ manchester/ e manchester_diferencial/    Um projeto por codificação
 └── saidas/
     ├── pmod_osciloscopio/             Ligações, tutorial e medições
     └── vga/                           Integração de vídeo
-relatorio_final/                       Estado do relatório e da demonstração
-referencias/professor/                 Enunciado e guias
-ferramentas/documentacao/              Geração e validação dos PDFs
-continuidade/                          Fontes e evidências de referência
+relatorio_final/                       Relatório técnico do Grupo 4
 ```
 
-## Ambiente e entrega
+## Ambiente e resultados
 
-Os ensaios documentados utilizaram Vivado 2025.2 com XSim no Windows 11 25H2, placa Digilent Basys 3, Analog Discovery 3 e WaveForms 3.24.4. Os dois projetos Vivado e seus bitstreams vieram dos ZIPs já versionados na raiz do fork.
+Os ensaios documentados utilizaram Vivado 2025.2 com XSim no Windows 11 25H2, placa Digilent Basys 3, Analog Discovery 3 e WaveForms 3.24.4. Cada projeto inclui seu próprio bitstream em `vivado_project/bitstream/`.
 
-Consulte o [relatório técnico](relatorio_final/relatorio.pdf) e o [estado da demonstração](relatorio_final/README.md), o [checklist de entrega](PENDENCIAS.md) e as [instruções para gerar os PDFs](ferramentas/documentacao/README.md). A entrega segue o [enunciado](referencias/professor/enunciado.pdf), o [guia de documentação](referencias/professor/guia_documentacao.pdf) e o [guia de entrega](referencias/professor/guia_entrega.pdf).
+O [relatório técnico](relatorio_final/relatorio.pdf) compara Manchester, Manchester Diferencial e NRZ-L. As capturas no PMOD registram o sinal codificado em C1. Faltam as aquisições simultâneas com o dado original em C2 e o vídeo de demonstração. No ensaio diferencial com switches alternados, a identificação da sequência depende dessa referência temporal.
