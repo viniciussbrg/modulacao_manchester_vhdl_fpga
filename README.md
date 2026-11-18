@@ -4,6 +4,8 @@ Faculdade Engenheiro Salvador Arena — Engenharia da Computação · 7º semest
 
 Comunicação de Dados — Sistemas Reconfiguráveis · Professor Vinicius Borges
 
+## Grupo
+
 | Nome | RA |
 |---|---|
 | Victor Mendes de Andrade Ferreira | 082230015 |
