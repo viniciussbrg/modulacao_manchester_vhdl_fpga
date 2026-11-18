@@ -1,5 +1,5 @@
-# Relatório final e demonstração
+# Relatório técnico e demonstração
 
-Esta pasta receberá relatorio.pdf e video_demo.mp4, ou um link acessível para o vídeo. Esses arquivos ainda não foram produzidos neste conjunto.
+O [relatório técnico do Grupo 4](relatorio.pdf) reúne as simulações no XSim, as medições de C1, as fotografias da placa e do monitor e a comparação com NRZ-L. A análise identifica os limites das medições disponíveis.
 
-O relatório deve consolidar metodologia, fundamentação, desenvolvimento, resultados de simulação/placa/PMOD/VGA, comparação dos codificadores com NRZ, conclusões e referências. Consulte o guia de documentação, seção 4, para a estrutura completa.
+O vídeo de demonstração e as capturas simultâneas dos dois sinais no PMOD permanecem pendentes. Consulte o [checklist](../PENDENCIAS.md) para acompanhar essas evidências.

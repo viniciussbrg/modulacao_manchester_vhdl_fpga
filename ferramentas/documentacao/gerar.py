@@ -15,7 +15,8 @@ def main():
     args = parser.parse_args()
     here = Path(__file__).resolve().parent
     for script in ('criar_tutoriais_simulacao.py', 'criar_tutoriais_pmod.py',
-                   'criar_documentacao_projetos.py'):
+                   'criar_documentacao_projetos.py', 'criar_tutoriais_bancada.py',
+                   'criar_relatorio.py'):
         subprocess.run([sys.executable, str(here / script)], cwd=ROOT, check=True)
     subprocess.run([sys.executable, str(here / 'validar.py'), '--alvo', 'build'],
                    cwd=ROOT, check=True)

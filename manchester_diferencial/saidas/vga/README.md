@@ -10,4 +10,4 @@ O circuito conta 2.200 períodos de pixel por linha e 1.125 linhas por quadro. C
 2. Utilize o [projeto e o bitstream deste codificador](../../vivado_project/README.md).
 3. Configure SW15 a SW0 e pressione BTNC. Com reset atendido, o nível codificado fica baixo. Ao soltar BTNC, acompanhe a mudança de cor em cada metade de bit e compare com o LED da posição atual.
 
-O tutorial VGA e as fotos ou o vídeo do monitor em operação continuam pendentes. As cores acima descrevem as atribuições de saída no VHDL.
+O [tutorial VGA](docs/tutorial_vga.pdf) reúne a montagem, a sequência de teste e as [fotografias da bancada](docs/midia/). Na subida do sinal codificado, o monitor passa a branco. Na descida, passa a verde. As fotos registram as cores observadas. A demonstração contínua, identificada por projeto, permanece pendente.

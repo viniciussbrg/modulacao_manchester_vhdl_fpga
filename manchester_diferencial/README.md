@@ -10,7 +10,7 @@ O bit 0 inverte o nível no início; o bit 1 mantém o nível anterior. A saída
 | sim/ | Testbench manchester_dif_tb.vhd |
 | constraints/ | [Mapeamento da Basys 3](constraints/manchester_dif.xdc) |
 | vivado_project/ | [Projeto Vivado e bitstream](vivado_project/README.md) |
-| docs/ | Tutorial de simulação e capturas; documentos adicionais em preparação |
+| docs/ | Tutoriais de simulação e programação, documentação técnica e fotografias |
 | saidas/pmod_osciloscopio/ | Saída PMOD, tutorial e capturas |
 | saidas/vga/ | Integração VGA e seu estado de preparação |
 
@@ -30,6 +30,6 @@ Consulte a [documentação do projeto](docs/documentacao_projeto.pdf) para o dia
 
 Na placa, BTNC aplica o reset síncrono. Ao soltar o botão, a transmissão recomeça em SW15. Somente o LED da posição em transmissão acompanha o nível codificado. Consulte as [conexões PMOD](saidas/pmod_osciloscopio/README.md) e a [integração VGA](saidas/vga/README.md).
 
-O tutorial de programação da placa está pendente. O [checklist](../PENDENCIAS.md) acompanha os documentos e as evidências de bancada.
+Siga o [tutorial de programação da placa](docs/tutorial_placa.pdf) e o [tutorial VGA](saidas/vga/docs/tutorial_vga.pdf) para testar os padrões de entrada desde o reset. O [checklist](../PENDENCIAS.md) acompanha os documentos e as evidências de bancada.
 
 Próxima leitura → [Relatório final e vídeo](../relatorio_final/README.md).

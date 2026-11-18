@@ -1,7 +1,7 @@
 # Codificação Manchester em VHDL
 
 Faculdade Engenheiro Salvador Arena — Engenharia da Computação, 7° Semestre.
-Trabalho de Comunicação de Dados — Sistemas Reconfiguráveis.
+Trabalho de Comunicação de Dados — Sistemas Reconfiguráveis. Grupo 4 · Professor Vinicius Borges · 7º semestre.
 
 | Nome | RA |
 |---|---|
@@ -18,10 +18,10 @@ Os projetos são organizados separadamente. As saídas PMOD e VGA têm pastas pr
 
 Abra o [tutorial de simulação do Manchester básico](manchester/docs/tutorial_simulacao.pdf). Ele mostra como acompanhar um bit de SW15 até a transição no meio do intervalo. Em seguida, compare a mesma sequência no projeto diferencial.
 
-| Projeto | Simulação | Medição na bancada | Saída VGA |
-|---|---|---|---|
-| [Manchester básico](manchester/README.md) | [Tutorial XSim](manchester/docs/tutorial_simulacao.pdf) | [Tutorial PMOD](manchester/saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf) | [Saída e cores previstas](manchester/saidas/vga/README.md) |
-| [Manchester Diferencial](manchester_diferencial/README.md) | [Tutorial XSim](manchester_diferencial/docs/tutorial_simulacao.pdf) | [Tutorial PMOD](manchester_diferencial/saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf) | [Saída e cores previstas](manchester_diferencial/saidas/vga/README.md) |
+| Projeto | Simulação | Programação | Medição na bancada | Saída VGA |
+|---|---|---|---|---|
+| [Manchester básico](manchester/README.md) | [Tutorial XSim](manchester/docs/tutorial_simulacao.pdf) | [Tutorial da placa](manchester/docs/tutorial_placa.pdf) | [Tutorial PMOD](manchester/saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf) | [Tutorial VGA](manchester/saidas/vga/docs/tutorial_vga.pdf) |
+| [Manchester Diferencial](manchester_diferencial/README.md) | [Tutorial XSim](manchester_diferencial/docs/tutorial_simulacao.pdf) | [Tutorial da placa](manchester_diferencial/docs/tutorial_placa.pdf) | [Tutorial PMOD](manchester_diferencial/saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf) | [Tutorial VGA](manchester_diferencial/saidas/vga/docs/tutorial_vga.pdf) |
 
 A documentação técnica descreve os registradores, a temporização e os pinos de cada implementação. Consulte a [referência do básico](manchester/docs/documentacao_projeto.pdf) e a [referência do diferencial](manchester_diferencial/docs/documentacao_projeto.pdf).
 
@@ -46,4 +46,4 @@ continuidade/                          Fontes e evidências de referência
 
 Os ensaios documentados utilizaram Vivado 2025.2 com XSim no Windows 11 25H2, placa Digilent Basys 3, Analog Discovery 3 e WaveForms 3.24.4. Os dois projetos Vivado e seus bitstreams vieram dos ZIPs já versionados na raiz do fork.
 
-Consulte o [estado do relatório e do vídeo](relatorio_final/README.md), o [checklist de entrega](PENDENCIAS.md) e as [instruções para gerar os PDFs](ferramentas/documentacao/README.md). A entrega segue o [enunciado](referencias/professor/enunciado.pdf), o [guia de documentação](referencias/professor/guia_documentacao.pdf) e o [guia de entrega](referencias/professor/guia_entrega.pdf).
+Consulte o [relatório técnico](relatorio_final/relatorio.pdf) e o [estado da demonstração](relatorio_final/README.md), o [checklist de entrega](PENDENCIAS.md) e as [instruções para gerar os PDFs](ferramentas/documentacao/README.md). A entrega segue o [enunciado](referencias/professor/enunciado.pdf), o [guia de documentação](referencias/professor/guia_documentacao.pdf) e o [guia de entrega](referencias/professor/guia_entrega.pdf).

@@ -28,5 +28,30 @@
     "gerado": "documentacao_manchester_diferencial.pdf",
     "destino": "manchester_diferencial/docs/documentacao_projeto.pdf",
     "paginas": 3
+  },
+  {
+    "gerado": "tutorial_placa_manchester.pdf",
+    "destino": "manchester/docs/tutorial_placa.pdf",
+    "paginas": 4
+  },
+  {
+    "gerado": "tutorial_vga_manchester.pdf",
+    "destino": "manchester/saidas/vga/docs/tutorial_vga.pdf",
+    "paginas": 3
+  },
+  {
+    "gerado": "tutorial_placa_manchester_diferencial.pdf",
+    "destino": "manchester_diferencial/docs/tutorial_placa.pdf",
+    "paginas": 4
+  },
+  {
+    "gerado": "tutorial_vga_manchester_diferencial.pdf",
+    "destino": "manchester_diferencial/saidas/vga/docs/tutorial_vga.pdf",
+    "paginas": 3
+  },
+  {
+    "gerado": "relatorio.pdf",
+    "destino": "relatorio_final/relatorio.pdf",
+    "paginas": 5
   }
 ]
