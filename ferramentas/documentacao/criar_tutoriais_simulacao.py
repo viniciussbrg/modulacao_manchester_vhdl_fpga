@@ -79,7 +79,7 @@ class Tutorial:
         self.c.setFont('Body', 7.4)
         self.c.setFillColor(MUTED)
         self.c.drawString(M, 29, 'Engenharia da Computação | 7° Semestre | Novembro de 2026')
-        self.c.drawRightString(PW-M, 29, f'{self.page} / 8')
+        self.c.drawRightString(PW-M, 29, f"{self.page} / {self.cfg.get('paginas', 8)}")
 
     def p(self, text, style='body', gap=BODY_GAP, width=None, x=None):
         p = para(text, style)
@@ -361,20 +361,21 @@ CONFIGS=[
       wrap='image(8).png',wrap_y=(212,545),log='image(8).png',log_box=(285,904,860,941),success_time='24471'),
 ]
 
-results=[]
-for cfg in CONFIGS:
-    result=Tutorial(cfg).build()
-    reader=PdfReader(result['path'])
-    texts=[p.extract_text() or '' for p in reader.pages]
-    assert len(texts)==8
-    for name,ra in MEMBERS:
-        assert name in texts[0] and ra in texts[0], (name,ra)
-    for token in ['Faculdade Engenheiro Salvador Arena','7° Semestre']:
-        assert token in texts[0]
-    assert cfg['success_time'] in '\n'.join(texts)
-    assert len(reader.outline)==8
-    result['pages']=len(texts)
-    result['bytes']=Path(result['path']).stat().st_size
-    results.append(result)
-(BUILD/'tutorial_pdf_validation.json').write_text(json.dumps(results,ensure_ascii=False,indent=2), encoding='utf-8')
-print(json.dumps(results,ensure_ascii=False,indent=2))
+if __name__ == '__main__':
+    results=[]
+    for cfg in CONFIGS:
+        result=Tutorial(cfg).build()
+        reader=PdfReader(result['path'])
+        texts=[p.extract_text() or '' for p in reader.pages]
+        assert len(texts)==8
+        for name,ra in MEMBERS:
+            assert name in texts[0] and ra in texts[0], (name,ra)
+        for token in ['Faculdade Engenheiro Salvador Arena','7° Semestre']:
+            assert token in texts[0]
+        assert cfg['success_time'] in '\n'.join(texts)
+        assert len(reader.outline)==8
+        result['pages']=len(texts)
+        result['bytes']=Path(result['path']).stat().st_size
+        results.append(result)
+    (BUILD/'tutorial_pdf_validation.json').write_text(json.dumps(results,ensure_ascii=False,indent=2), encoding='utf-8')
+    print(json.dumps(results,ensure_ascii=False,indent=2))

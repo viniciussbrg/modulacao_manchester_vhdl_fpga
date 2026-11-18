@@ -18,6 +18,8 @@ A convenção IEEE 802.3 representa o bit 0 por uma transição de alto para bai
 
 [src/manchester.vhd](src/manchester.vhd) implementa o codificador. [sim/manchester_tb.vhd](sim/manchester_tb.vhd) aplica os estímulos e confere os resultados. O top de simulação é manchester_tb. O testbench usa clock de 10 ns e 10 ciclos por bit, totalizando 100 ns por bit. Na placa, o valor padrão de 100.000.000 ciclos a 100 MHz corresponde a 1 s por bit.
 
+Consulte a [documentação do projeto](docs/documentacao_projeto.pdf) para o diagrama, a interface, a temporização e a correspondência entre portas e pinos.
+
 ## Como simular
 
 1. Abra o [projeto no Vivado 2025.2](vivado_project/projeto/manchester/manchester.xpr).

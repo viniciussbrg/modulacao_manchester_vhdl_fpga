@@ -1,6 +1,6 @@
-# Geração dos tutoriais
+# Geração dos tutoriais e da documentação técnica
 
-As versões finais ficam nas pastas dos dois projetos. O conteúdo editável está em criar_tutoriais_simulacao.py e criar_tutoriais_pmod.py. estilo_tutoriais.py é a única definição compartilhada de fontes, medidas, cores e quadro dos integrantes.
+As versões finais ficam nas pastas dos dois projetos. Os tutoriais usam criar_tutoriais_simulacao.py e criar_tutoriais_pmod.py. As referências técnicas usam criar_documentacao_projetos.py e o mesmo modelo de página da simulação. estilo_tutoriais.py é a única definição compartilhada de fontes, medidas, cores e quadro dos integrantes.
 
 Os scripts deste diretório foram adaptados para caminhos relativos e fontes locais. O conteúdo e o layout dos PDFs foram preservados. Os scripts anteriores à adaptação estão nos ZIPs de continuidade/pacotes_fontes_aprovados/.
 
@@ -14,7 +14,7 @@ py -3 -m venv .venv
 .\.venv\Scripts\python.exe ferramentas/documentacao/gerar.py
 ```
 
-A geração escreve em .build/documentacao/pdf/. Ela não altera os quatro PDFs finais por padrão. O gerador já interrompe se o conteúdo ultrapassar o espaço reservado nas páginas.
+A geração escreve em .build/documentacao/pdf/. Ela não altera os PDFs finais por padrão. O gerador já interrompe se o conteúdo ultrapassar o espaço reservado nas páginas.
 
 ## Validação
 
@@ -31,7 +31,7 @@ Compare as páginas com o modelo aprovado. Após revisar a nova geração, publi
 .\.venv\Scripts\python.exe ferramentas/documentacao/gerar.py --publicar
 ```
 
-Essa opção gera, valida e copia os quatro PDFs para seus destinos; o Git registra as mudanças. Não executa git add, commit ou push automaticamente: o Codex faz essas operações após revisar o diff e o remoto correto.
+Essa opção gera, valida e copia os seis PDFs para seus destinos; o Git registra as mudanças. Não executa git add, commit ou push automaticamente: o Codex faz essas operações após revisar o diff e o remoto correto.
 
 ## Evidências
 

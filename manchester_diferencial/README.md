@@ -18,6 +18,8 @@ O bit 0 inverte o nível no início; o bit 1 mantém o nível anterior. A saída
 
 [src/manchester_dif.vhd](src/manchester_dif.vhd) implementa o codificador. [sim/manchester_dif_tb.vhd](sim/manchester_dif_tb.vhd) aplica os estímulos e confere os resultados. O top de simulação é manchester_dif_tb. O testbench usa clock de 10 ns e 10 ciclos por bit, totalizando 100 ns por bit. Na placa, o valor padrão de 100.000.000 ciclos a 100 MHz corresponde a 1 s por bit.
 
+Consulte a [documentação do projeto](docs/documentacao_projeto.pdf) para o diagrama, a interface, a temporização e a correspondência entre portas e pinos.
+
 ## Como simular
 
 1. Abra o [projeto no Vivado 2025.2](vivado_project/projeto/manchester_diferencial/manchester_diferencial.xpr).

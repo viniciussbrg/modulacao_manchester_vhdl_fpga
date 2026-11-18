@@ -18,5 +18,15 @@
     "gerado": "tutorial_pmod_manchester_diferencial.pdf",
     "destino": "manchester_diferencial/saidas/pmod_osciloscopio/docs/tutorial_pmod.pdf",
     "paginas": 11
+  },
+  {
+    "gerado": "documentacao_manchester.pdf",
+    "destino": "manchester/docs/documentacao_projeto.pdf",
+    "paginas": 3
+  },
+  {
+    "gerado": "documentacao_manchester_diferencial.pdf",
+    "destino": "manchester_diferencial/docs/documentacao_projeto.pdf",
+    "paginas": 3
   }
 ]

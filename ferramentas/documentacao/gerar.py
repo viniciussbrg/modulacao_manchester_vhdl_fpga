@@ -1,4 +1,4 @@
-"""Gera os quatro tutoriais; só substitui os finais com --publicar."""
+"""Gera os tutoriais e as referências técnicas; só substitui os finais com --publicar."""
 import argparse
 from pathlib import Path
 import shutil
@@ -11,10 +11,11 @@ from caminhos_documentacao import ROOT, BUILD, DOCUMENTOS
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--publicar', action='store_true',
-                        help='copiar os quatro PDFs validados para os destinos finais')
+                        help='copiar os PDFs validados para os destinos finais')
     args = parser.parse_args()
     here = Path(__file__).resolve().parent
-    for script in ('criar_tutoriais_simulacao.py', 'criar_tutoriais_pmod.py'):
+    for script in ('criar_tutoriais_simulacao.py', 'criar_tutoriais_pmod.py',
+                   'criar_documentacao_projetos.py'):
         subprocess.run([sys.executable, str(here / script)], cwd=ROOT, check=True)
     subprocess.run([sys.executable, str(here / 'validar.py'), '--alvo', 'build'],
                    cwd=ROOT, check=True)

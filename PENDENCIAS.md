@@ -29,8 +29,8 @@ Controle interno de trabalho. “Disponível” significa presente neste pacote;
 
 - [ ] tutorial_placa.pdf — Manchester básico, com síntese, implementação, bitstream, Hardware Manager, programação e uso de switches/LEDs/reset.
 - [ ] tutorial_placa.pdf — Manchester Diferencial, com o mesmo roteiro e evidências correspondentes.
-- [ ] documentacao_projeto.pdf — básico, com diagrama, portas, parâmetros, funcionamento e mapeamento efetivo.
-- [ ] documentacao_projeto.pdf — diferencial, incluindo memória do nível anterior e reset.
+- [x] [Documentação técnica do básico](manchester/docs/documentacao_projeto.pdf) com diagrama, interface, temporização, registro do XSim e mapeamento do XDC.
+- [x] [Documentação técnica do diferencial](manchester_diferencial/docs/documentacao_projeto.pdf) com memória do nível anterior, transições, reset e mapeamento. Os dois PDFs têm três páginas cada e passaram pela validação estrutural e pela inspeção visual.
 - [ ] tutorial_vga.pdf e evidências — ambos os projetos.
 - [x] Sete READMEs revisados com índice, fontes, projetos, saídas e instruções de uso. A identificação acadêmica e os links para documentos futuros seguem em aberto.
 - [ ] relatorio_final/relatorio.pdf, incluindo comparação Manchester × diferencial × NRZ e análise dos resultados.
@@ -49,7 +49,8 @@ Controle interno de trabalho. “Disponível” significa presente neste pacote;
 ## Entrega final
 
 - [ ] Reprodutibilidade de cada projeto sem arquivos externos à sua pasta.
-- [ ] Links relativos, imagens, bibliografia, nomes e RAs conferidos.
+- [x] Os 77 links relativos dos 17 READMEs resolvem localmente. As 44 páginas dos seis PDFs passaram no validador, com conferência de nomes e RAs na abertura e comparação das renderizações com os arquivos finais.
+- [ ] Confirmar em navegador o acesso ao manual da Basys 3 e ao manual do Scope do WaveForms. As consultas HTTP aos dois endereços da Digilent receberam 403. Os outros sete endereços distintos citados nos tutoriais responderam 200.
 - [ ] Arquivos exigidos preenchidos; pasta vazia não conta como entrega.
-- [ ] Push para a main do fork correto.
+- [x] Organização, fontes e tutoriais publicados na main do fork no commit [e6c6fe2](https://github.com/vmafdev/modulacao_manchester_vhdl_fpga/commit/e6c6fe2).
 - [ ] PR manual pelo grupo para sua branch no repositório oficial, após concluir a entrega.
