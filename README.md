@@ -50,5 +50,7 @@ O [relatório técnico](relatorio_final/relatorio.pdf) compara Manchester, Manch
 
 ## Vídeos de demonstração
 
+Para assistir a cada vídeo, abra o link correspondente e baixe o arquivo MP4 para reproduzi-lo no seu dispositivo.
+
 - [Manchester básico na Basys 3](relatorio_final/manchester_basico.mp4)
 - [Manchester Diferencial na Basys 3](relatorio_final/manchester_diferencial.mp4)
