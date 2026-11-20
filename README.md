@@ -46,4 +46,9 @@ relatorio_final/                       Relatório técnico do Grupo 4
 
 Os ensaios documentados utilizaram Vivado 2025.2 com XSim no Windows 11 25H2, placa Digilent Basys 3, Analog Discovery 3 e WaveForms 3.24.4. Cada projeto inclui seu próprio bitstream em `vivado_project/bitstream/`.
 
-O [relatório técnico](relatorio_final/relatorio.pdf) compara Manchester, Manchester Diferencial e NRZ-L. As capturas no PMOD registram o sinal codificado em C1. Faltam as aquisições simultâneas com o dado original em C2 e o vídeo de demonstração. No ensaio diferencial com switches alternados, a identificação da sequência depende dessa referência temporal.
+O [relatório técnico](relatorio_final/relatorio.pdf) compara Manchester, Manchester Diferencial e NRZ-L. As capturas no PMOD registram o sinal codificado em C1.
+
+## Vídeos de demonstração
+
+- [Manchester básico na Basys 3](relatorio_final/manchester_basico.mp4)
+- [Manchester Diferencial na Basys 3](relatorio_final/manchester_diferencial.mp4)
