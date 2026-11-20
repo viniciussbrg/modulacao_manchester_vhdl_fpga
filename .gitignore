@@ -1,20 +1,35 @@
-# Arquivos temporários e gerados pelo Vivado
+# Python and temporary documentation builds
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.build/
+# Temporary files and credentials
+*.tmp
+*.bak
+~*.docx
+.DS_Store
+Thumbs.db
+.env
+.env.*
+# Reproducible Vivado cache/log directories only
+.Xil/
+*.cache/
+*.hw/
 *.jou
+vivado.log
+vivado_*.log
+# .xpr, .xci, .xdc, .wcfg, .bit, PDFs and evidence remain eligible for Git.
+
+# Outros produtos locais do Vivado e do Windows
 *.log
 *.str
 *.pb
 *.wdb
 *.backup.*
-.Xil/
-*.cache/
 *.runs/
 *.sim/
-*.hw/
 *.gen/
 *.ip_user_files/
 *.tmp/
-
-# Sistema operacional
-.DS_Store
-Thumbs.db
 desktop.ini
