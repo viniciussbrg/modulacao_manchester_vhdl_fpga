@@ -34,10 +34,7 @@ architecture sim of manchester_tb is
     signal test_case      : natural := 0;
     signal sim_done       : boolean := false;
 begin
-    dut : entity work.manchester
-        generic map (
-            CYCLES_PER_BIT => SIM_CYCLES_PER_BIT
-        )
+    dut : entity work.top_manchester_vga
         port map (
             clk      => clk,
             rst      => rst,
