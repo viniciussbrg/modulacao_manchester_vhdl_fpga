@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="manchester_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="manchester_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,484.001 ns"></ZoomEndTime>
+      <Cursor1Time time="228.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="91"></NameColumnWidth>
+      <ValueColumnWidth column_width="198"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="18" />
+   <wvobject fp_name="/manchester_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/dut/bit_atual" type="logic">
+      <obj_property name="ElementShortName">bit_atual</obj_property>
+      <obj_property name="ObjectShortName">bit_atual</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/dut/metade" type="logic">
+      <obj_property name="ElementShortName">metade</obj_property>
+      <obj_property name="ObjectShortName">metade</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/dut/pos" type="other">
+      <obj_property name="ElementShortName">pos</obj_property>
+      <obj_property name="ObjectShortName">pos</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/data_out" type="logic">
+      <obj_property name="ElementShortName">data_out</obj_property>
+      <obj_property name="ObjectShortName">data_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/led" type="array">
+      <obj_property name="ElementShortName">led[15:0]</obj_property>
+      <obj_property name="ObjectShortName">led[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/erros" type="other">
+      <obj_property name="ElementShortName">erros</obj_property>
+      <obj_property name="ObjectShortName">erros</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/fim" type="other">
+      <obj_property name="ElementShortName">fim</obj_property>
+      <obj_property name="ObjectShortName">fim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/CLK_PERIOD" type="other">
+      <obj_property name="ElementShortName">CLK_PERIOD</obj_property>
+      <obj_property name="ObjectShortName">CLK_PERIOD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/CYCLES_PER_BIT" type="other">
+      <obj_property name="ElementShortName">CYCLES_PER_BIT</obj_property>
+      <obj_property name="ObjectShortName">CYCLES_PER_BIT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/BIT_PERIOD" type="other">
+      <obj_property name="ElementShortName">BIT_PERIOD</obj_property>
+      <obj_property name="ObjectShortName">BIT_PERIOD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/LATENCIA" type="other">
+      <obj_property name="ElementShortName">LATENCIA</obj_property>
+      <obj_property name="ObjectShortName">LATENCIA</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/SEQ_A" type="array">
+      <obj_property name="ElementShortName">SEQ_A[15:0]</obj_property>
+      <obj_property name="ObjectShortName">SEQ_A[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/SEQ_B" type="array">
+      <obj_property name="ElementShortName">SEQ_B[15:0]</obj_property>
+      <obj_property name="ObjectShortName">SEQ_B[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/dut/idx" type="other">
+      <obj_property name="ElementShortName">idx</obj_property>
+      <obj_property name="ObjectShortName">idx</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/manchester_tb/dut/cnt" type="other">
+      <obj_property name="ElementShortName">cnt</obj_property>
+      <obj_property name="ObjectShortName">cnt</obj_property>
+   </wvobject>
+</wave_config>
