@@ -1,0 +1,95 @@
+Execucao real em GHDL 2.0.0; caminhos normalizados para o pacote.
+
+$ ghdl -a --std=08 manchester/src/input_conditioner.vhd manchester/src/line_encoder.vhd manchester/saidas/vga/src/vga_colors.vhd manchester/src/manchester_top.vhd manchester/sim/vga_tb.vhd manchester/sim/top_tb.vhd manchester/sim/manchester_tb.vhd
+
+$ ghdl -r --std=08 manchester_tb -gCYCLES_PER_BIT=2 --assert-level=error
+manchester/sim/manchester_tb.vhd:114:5:@6206ns:(report note): PASS: manchester_tb; CYCLES_PER_BIT=2
+simulation finished @6206ns
+
+$ ghdl -r --std=08 manchester_tb -gCYCLES_PER_BIT=4 --assert-level=error
+manchester/sim/manchester_tb.vhd:114:5:@12216ns:(report note): PASS: manchester_tb; CYCLES_PER_BIT=4
+simulation finished @12216ns
+
+$ ghdl -r --std=08 manchester_tb -gCYCLES_PER_BIT=10 --assert-level=error
+manchester/sim/manchester_tb.vhd:114:5:@30486ns:(report note): PASS: manchester_tb; CYCLES_PER_BIT=10
+simulation finished @30486ns
+
+$ ghdl -r --std=08 manchester_tb -gCYCLES_PER_BIT=100 --assert-level=error
+manchester/sim/manchester_tb.vhd:114:5:@347736ns:(report note): PASS: manchester_tb; CYCLES_PER_BIT=100
+simulation finished @347736ns
+
+$ ghdl -r --std=08 top_tb --assert-level=error
+manchester/sim/top_tb.vhd:60:5:@6759ns:(report note): PASS: top_tb; PMOD, LEDs, captura e reset sincronizado
+simulation finished @6759ns
+
+$ ghdl -r --std=08 vga_tb --assert-level=error
+manchester/sim/vga_tb.vhd:44:5:@33600036ns:(report note): PASS: vga_tb; dois quadros 800x525 e retorno ao inicio
+simulation finished @33600036ns
+
+GHDL --synth manchester_top
+manchester/src/input_conditioner.vhd:19:13:warning: unhandled attribute "shreg_extract"
+  attribute SHREG_EXTRACT of rst_pipe, sw_meta, sw_reg : signal is "NO";
+            ^
+manchester/src/input_conditioner.vhd:19:13:warning: unhandled attribute "shreg_extract"
+  attribute SHREG_EXTRACT of rst_pipe, sw_meta, sw_reg : signal is "NO";
+            ^
+manchester/src/input_conditioner.vhd:19:13:warning: unhandled attribute "shreg_extract"
+  attribute SHREG_EXTRACT of rst_pipe, sw_meta, sw_reg : signal is "NO";
+            ^
+manchester/src/input_conditioner.vhd:17:13:warning: unhandled attribute "async_reg"
+  attribute ASYNC_REG of rst_pipe, sw_meta, sw_reg : signal is "TRUE";
+            ^
+manchester/src/input_conditioner.vhd:17:13:warning: unhandled attribute "async_reg"
+  attribute ASYNC_REG of rst_pipe, sw_meta, sw_reg : signal is "TRUE";
+            ^
+manchester/src/input_conditioner.vhd:17:13:warning: unhandled attribute "async_reg"
+  attribute ASYNC_REG of rst_pipe, sw_meta, sw_reg : signal is "TRUE";
+            ^
+exit=0
+
+$ ghdl -a --std=08 manchester_diferencial/src/input_conditioner.vhd manchester_diferencial/src/line_encoder.vhd manchester_diferencial/saidas/vga/src/vga_colors.vhd manchester_diferencial/src/manchester_diferencial_top.vhd manchester_diferencial/sim/vga_tb.vhd manchester_diferencial/sim/manchester_diferencial_tb.vhd manchester_diferencial/sim/top_tb.vhd
+
+$ ghdl -r --std=08 manchester_diferencial_tb -gCYCLES_PER_BIT=2 --assert-level=error
+manchester_diferencial/sim/manchester_diferencial_tb.vhd:114:5:@6206ns:(report note): PASS: manchester_diferencial_tb; CYCLES_PER_BIT=2
+simulation finished @6206ns
+
+$ ghdl -r --std=08 manchester_diferencial_tb -gCYCLES_PER_BIT=4 --assert-level=error
+manchester_diferencial/sim/manchester_diferencial_tb.vhd:114:5:@12216ns:(report note): PASS: manchester_diferencial_tb; CYCLES_PER_BIT=4
+simulation finished @12216ns
+
+$ ghdl -r --std=08 manchester_diferencial_tb -gCYCLES_PER_BIT=10 --assert-level=error
+manchester_diferencial/sim/manchester_diferencial_tb.vhd:114:5:@30486ns:(report note): PASS: manchester_diferencial_tb; CYCLES_PER_BIT=10
+simulation finished @30486ns
+
+$ ghdl -r --std=08 manchester_diferencial_tb -gCYCLES_PER_BIT=100 --assert-level=error
+manchester_diferencial/sim/manchester_diferencial_tb.vhd:114:5:@347736ns:(report note): PASS: manchester_diferencial_tb; CYCLES_PER_BIT=100
+simulation finished @347736ns
+
+$ ghdl -r --std=08 top_tb --assert-level=error
+manchester_diferencial/sim/top_tb.vhd:60:5:@6759ns:(report note): PASS: top_tb; PMOD, LEDs, captura e reset sincronizado
+simulation finished @6759ns
+
+$ ghdl -r --std=08 vga_tb --assert-level=error
+manchester_diferencial/sim/vga_tb.vhd:44:5:@33600036ns:(report note): PASS: vga_tb; dois quadros 800x525 e retorno ao inicio
+simulation finished @33600036ns
+
+GHDL --synth manchester_diferencial_top
+manchester_diferencial/src/input_conditioner.vhd:19:13:warning: unhandled attribute "shreg_extract"
+  attribute SHREG_EXTRACT of rst_pipe, sw_meta, sw_reg : signal is "NO";
+            ^
+manchester_diferencial/src/input_conditioner.vhd:19:13:warning: unhandled attribute "shreg_extract"
+  attribute SHREG_EXTRACT of rst_pipe, sw_meta, sw_reg : signal is "NO";
+            ^
+manchester_diferencial/src/input_conditioner.vhd:19:13:warning: unhandled attribute "shreg_extract"
+  attribute SHREG_EXTRACT of rst_pipe, sw_meta, sw_reg : signal is "NO";
+            ^
+manchester_diferencial/src/input_conditioner.vhd:17:13:warning: unhandled attribute "async_reg"
+  attribute ASYNC_REG of rst_pipe, sw_meta, sw_reg : signal is "TRUE";
+            ^
+manchester_diferencial/src/input_conditioner.vhd:17:13:warning: unhandled attribute "async_reg"
+  attribute ASYNC_REG of rst_pipe, sw_meta, sw_reg : signal is "TRUE";
+            ^
+manchester_diferencial/src/input_conditioner.vhd:17:13:warning: unhandled attribute "async_reg"
+  attribute ASYNC_REG of rst_pipe, sw_meta, sw_reg : signal is "TRUE";
+            ^
+exit=0
