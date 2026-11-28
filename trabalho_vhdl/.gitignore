@@ -1,0 +1,10 @@
+# Resultados transitórios; manter os fontes e os .xpr gerados exigidos na entrega.
+**/.Xil/
+**/*.jou
+**/*.log
+**/*.wdb
+**/ghdl_work/
+**/*.cache/
+**/*.runs/
+**/*.sim/
+**/reports/
